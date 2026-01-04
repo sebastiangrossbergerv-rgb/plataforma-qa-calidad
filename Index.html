@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plataforma Interactiva QA - Calidad de Software</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>🎯 Plataforma Interactiva QA</h1>
+    <p>Calidad de Software – Curso completo basado en ISTQB Foundation Level</p>
+    <button id="toggleTheme" class="theme-toggle">🌙 Modo Oscuro</button>
+  </header>
+
+  <!-- Container Principal -->
+  <div class="container">
+    <!-- Tarjeta de Introducción -->
+    <div class="intro-card">
+      <h2>Bienvenido a tu curso de Calidad de Software</h2>
+      <div class="badges">
+        <span class="badge">📚 8 Semanas</span>
+        <span class="badge">🏆 ISTQB CTFL</span>
+        <span class="badge">🎓 Certificación Internacional</span>
+        <span class="badge">💼 Roles QA</span>
+      </div>
+      <p>
+        Esta plataforma resume el contenido completo de tu curso, alineado con el 
+        <strong>ISTQB Certified Tester Foundation Level (CTFL)</strong> en español. 
+        Cada semana incluye conceptos clave, ejemplos prácticos y actividades interactivas 
+        para prepararte como QA profesional.
+      </p>
+      
+      <!-- Barra de Progreso -->
+      <div class="progress-section">
+        <h3>Tu Progreso</h3>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <p class="progress-text"><span id="progressPercent">0</span>% completado (<span id="weeksCompleted">0</span>/8 semanas)</p>
+        <button id="resetProgress" class="btn-secondary">Reiniciar Progreso</button>
+      </div>
+
+      <div class="istqb-tip">
+        <strong>💡 Tip ISTQB:</strong>
+        El examen Foundation Level tiene 40 preguntas de opción múltiple. 
+        Necesitas 65% (26/40) para aprobar. Estudia los 7 principios de prueba 
+        y las definiciones clave (error, defecto, falla).
+      </div>
+    </div>
+
+    <!-- Grid de Semanas -->
+    <div class="weeks-grid" id="weeksGrid">
+      <!-- Las semanas se generarán dinámicamente con JavaScript -->
+    </div>
+
+    <!-- Sección de Próximos Pasos -->
+    <div class="intro-card next-steps">
+      <h2>🚀 Próximos pasos</h2>
+      <ul class="checklist">
+        <li>Completa las actividades de cada semana</li>
+        <li>Practica con exámenes de muestra ISTQB</li>
+        <li>Aplica los conceptos en proyectos reales</li>
+        <li>Regístrate para el examen ISTQB Foundation Level</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>Plataforma Interactiva QA – Calidad de Software | Basado en ISTQB CTFL 2018</p>
+    <p class="footer-sub">Creado para estudiantes de QA Engineering</p>
+  </footer>
+
+  <!-- Script JavaScript -->
+  <script src="js/main.js"></script>
+</body>
+</html>
