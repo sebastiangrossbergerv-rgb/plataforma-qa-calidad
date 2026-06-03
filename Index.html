@@ -3,77 +3,67 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Plataforma Interactiva QA - Calidad de Software</title>
+  <title>Plataforma ISTQB Foundation Level — QA Calidad de Software</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <h1>🎯 Plataforma Interactiva QA</h1>
-    <p>Calidad de Software – Curso completo basado en ISTQB Foundation Level</p>
-    <button id="toggleTheme" class="theme-toggle">🌙 Modo Oscuro</button>
-  </header>
-
-  <!-- Container Principal -->
-  <div class="container">
-    <!-- Tarjeta de Introducción -->
-    <div class="intro-card">
-      <h2>Bienvenido a tu curso de Calidad de Software</h2>
-      <div class="badges">
-        <span class="badge">📚 8 Semanas</span>
-        <span class="badge">🏆 ISTQB CTFL</span>
-        <span class="badge">🎓 Certificación Internacional</span>
-        <span class="badge">💼 Roles QA</span>
+  <div class="app-shell">
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <div class="sidebar-logo">
+        <span class="logo-icon">🎯</span>
+        <span class="logo-text">ISTQB QA</span>
       </div>
-      <p>
-        Esta plataforma resume el contenido completo de tu curso, alineado con el 
-        <strong>ISTQB Certified Tester Foundation Level (CTFL)</strong> en español. 
-        Cada semana incluye conceptos clave, ejemplos prácticos y actividades interactivas 
-        para prepararte como QA profesional.
-      </p>
-      
-      <!-- Barra de Progreso -->
-      <div class="progress-section">
-        <h3>Tu Progreso</h3>
-        <div class="progress-bar">
-          <div class="progress-fill" id="progressFill"></div>
-        </div>
-        <p class="progress-text"><span id="progressPercent">0</span>% completado (<span id="weeksCompleted">0</span>/8 semanas)</p>
-        <button id="resetProgress" class="btn-secondary">Reiniciar Progreso</button>
+      <div class="sidebar-nav">
+        <a class="nav-link active" data-view="home">🏠 Inicio</a>
+        <div class="nav-group-label">Capítulos</div>
+        <a class="nav-link" data-view="chapter" data-params='{"id":1}'>🧪 Cap. 1 — Fundamentos</a>
+        <a class="nav-link" data-view="chapter" data-params='{"id":2}'>🔄 Cap. 2 — SDLC</a>
+        <a class="nav-link" data-view="chapter" data-params='{"id":3}'>📋 Cap. 3 — Estática</a>
+        <a class="nav-link" data-view="chapter" data-params='{"id":4}'>🎯 Cap. 4 — Técnicas</a>
+        <a class="nav-link" data-view="chapter" data-params='{"id":5}'>📊 Cap. 5 — Gestión</a>
+        <a class="nav-link" data-view="chapter" data-params='{"id":6}'>🔧 Cap. 6 — Herramientas</a>
+        <div class="nav-group-label">Práctica</div>
+        <a class="nav-link" data-view="exam">📝 Simulacro ISTQB</a>
+        <a class="nav-link" data-view="flashcards">🃏 Flashcards</a>
+        <a class="nav-link" data-view="glossary">📖 Glosario</a>
       </div>
-
-      <div class="istqb-tip">
-        <strong>💡 Tip ISTQB:</strong>
-        El examen Foundation Level tiene 40 preguntas de opción múltiple. 
-        Necesitas 65% (26/40) para aprobar. Estudia los 7 principios de prueba 
-        y las definiciones clave (error, defecto, falla).
+      <div class="sidebar-footer">
+        <button id="toggleTheme" class="theme-toggle">☀️ Modo Claro</button>
+        <p>ISTQB® CTFL 2018</p>
       </div>
-    </div>
+    </nav>
 
-    <!-- Grid de Semanas -->
-    <div class="weeks-grid" id="weeksGrid">
-      <!-- Las semanas se generarán dinámicamente con JavaScript -->
-    </div>
+    <!-- Mobile header -->
+    <header class="mobile-header">
+      <button class="menu-toggle" onclick="toggleMobileSidebar()">☰</button>
+      <span>ISTQB QA Platform</span>
+      <button id="toggleThemeMobile" onclick="toggleTheme()" class="theme-toggle-mobile">🌙</button>
+    </header>
 
-    <!-- Sección de Próximos Pasos -->
-    <div class="intro-card next-steps">
-      <h2>🚀 Próximos pasos</h2>
-      <ul class="checklist">
-        <li>Completa las actividades de cada semana</li>
-        <li>Practica con exámenes de muestra ISTQB</li>
-        <li>Aplica los conceptos en proyectos reales</li>
-        <li>Regístrate para el examen ISTQB Foundation Level</li>
-      </ul>
-    </div>
+    <!-- Main Content -->
+    <main class="main-area">
+      <div id="mainContent" class="main-content">
+        <!-- Rendered dynamically -->
+      </div>
+    </main>
   </div>
 
-  <!-- Footer -->
-  <footer>
-    <p>Plataforma Interactiva QA – Calidad de Software | Basado en ISTQB CTFL 2018</p>
-    <p class="footer-sub">Creado para estudiantes de QA Engineering</p>
-  </footer>
-
-  <!-- Script JavaScript -->
-  <script src="js/main.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    function toggleMobileSidebar() {
+      document.querySelector('.sidebar').classList.toggle('open');
+    }
+    // Close sidebar on nav click (mobile)
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('nav-link')) {
+        document.querySelector('.sidebar').classList.remove('open');
+      }
+    });
+  </script>
 </body>
 </html>
