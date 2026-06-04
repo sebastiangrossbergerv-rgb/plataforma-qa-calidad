@@ -1033,35 +1033,411 @@ const GLOSSARY = [
 ];
 
 // ============================================================
-// FLASHCARDS
+// FLASHCARDS — 52 tarjetas con ejemplos concretos
 // ============================================================
 const FLASHCARDS = [
-  { front: "Error → Defecto → Fallo", back: "Error: acción humana equivocada\nDefecto: imperfección en el código/doc\nFallo: comportamiento incorrecto en ejecución", category: "Fundamentos" },
-  { front: "Principio 1: Las pruebas muestran...", back: "...la PRESENCIA de defectos, no su AUSENCIA.\nNo se puede demostrar que el software no tiene defectos.", category: "7 Principios" },
-  { front: "Principio 2: Pruebas exhaustivas", back: "Son IMPOSIBLES excepto en casos triviales.\nSolución: análisis de riesgo, técnicas y prioridades.", category: "7 Principios" },
-  { front: "Principio 3: Pruebas tempranas", back: "Detectar defectos pronto AHORRA TIEMPO Y DINERO.\nLas actividades de prueba deben comenzar lo antes posible (shift left).", category: "7 Principios" },
-  { front: "Principio 4: Agrupación de defectos", back: "Un pequeño número de módulos contiene la MAYORÍA de los defectos.\nRelación 80/20: concentrar el esfuerzo en áreas críticas.", category: "7 Principios" },
-  { front: "Principio 5: Paradoja del pesticida", back: "Los mismos casos de prueba repetidos DEJAN DE ENCONTRAR nuevos defectos.\nSolución: revisar y actualizar regularmente los casos de prueba.", category: "7 Principios" },
-  { front: "Principio 6: Pruebas contextuales", back: "Las pruebas dependen del CONTEXTO.\nSoftware médico ≠ software de entretenimiento. El enfoque varía.", category: "7 Principios" },
-  { front: "Principio 7: Falacia de ausencia de errores", back: "Un sistema sin defectos puede seguir siendo INÚTIL si no satisface las necesidades del usuario.\nVerificar ≠ Validar.", category: "7 Principios" },
-  { front: "Prueba vs Depuración", back: "PRUEBA: encontrar fallos (probador)\nDEPURACIÓN: encontrar, analizar y corregir causas (desarrollador)", category: "Fundamentos" },
-  { front: "Validación vs Verificación", back: "VERIFICACIÓN: ¿Construimos el producto correctamente? (cumple especificaciones)\nVALIDACIÓN: ¿Construimos el producto correcto? (satisface necesidades del usuario)", category: "Fundamentos" },
-  { front: "Prueba de Componente", back: "= Prueba unitaria\nObjeto: módulos/clases individuales\nQuién: desarrolladores\nAislado del resto del sistema", category: "Niveles de Prueba" },
-  { front: "Prueba de Sistema", back: "Verifica el comportamiento del SISTEMA COMPLETO\nIncluye funcional y no funcional\nEquipo de prueba independiente", category: "Niveles de Prueba" },
-  { front: "Prueba Alfa vs Beta", back: "ALFA: en el sitio del desarrollador, con usuarios reales\nBETA: en el sitio del usuario/cliente, sin supervisión del desarrollador", category: "Niveles de Prueba" },
-  { front: "Partición de Equivalencia", back: "Divide los datos en particiones donde todos los valores SE COMPORTAN IGUAL.\nMínimo 1 caso de prueba por partición válida e inválida.", category: "Técnicas" },
-  { front: "AVL de 2 valores", back: "Para cada límite: valor del límite + valor adyacente inválido\nEj. campo 1-100: probar 0, 1, 100, 101", category: "Técnicas" },
-  { front: "Tabla de Decisión", back: "Modela combinaciones de condiciones y acciones resultantes.\nN condiciones binarias → máximo 2^N combinaciones (reglas).", category: "Técnicas" },
-  { front: "Prueba de Transición de Estados", back: "Modela estado + evento → nueva estado + acción.\nCobertura: todos los estados → todas las transiciones válidas → todas las transiciones (incluyendo inválidas).", category: "Técnicas" },
-  { front: "Cobertura de Decisiones vs Sentencias", back: "100% decisiones ⊇ 100% sentencias\nLa cobertura de decisiones es MÁS EXIGENTE.\nEjemplo: if sin else, 100% sentencias no garantiza probar el falso.", category: "Técnicas" },
-  { front: "Prueba Exploratoria", back: "Diseño y ejecución SIMULTÁNEOS\nGuiada por aprendizaje en tiempo real\nSe documenta con 'cartas de prueba' (test charters)", category: "Técnicas" },
-  { front: "Inspección (Revisión)", back: "La más FORMAL de las revisiones\nModerador CERTIFICADO\nRoles definidos + criterios de entrada/salida + métricas\nObjetivo principal: detectar defectos", category: "Prueba Estática" },
-  { front: "Severidad vs Prioridad", back: "SEVERIDAD: impacto técnico en el sistema (la asigna QA)\nPRIORIDAD: urgencia de corrección para el negocio (la asigna el product owner)", category: "Gestión" },
-  { front: "Prueba de Confirmación vs Regresión", back: "CONFIRMACIÓN: verifica que el defecto corregido ya no ocurre\nREGRESIÓN: verifica que los cambios no introdujeron nuevos defectos en otras partes", category: "Tipos de Prueba" },
-  { front: "TDD - Test Driven Development", back: "1. Escribir prueba fallida\n2. Escribir código mínimo para pasarla\n3. Refactorizar\nEl test precede al código.", category: "Agile" },
-  { front: "Riesgo = ?", back: "Riesgo = Probabilidad × Impacto\nRiesgo de PRODUCTO: posibilidad de fallo del sistema\nRiesgo de PROYECTO: factores que afectan el éxito del proyecto", category: "Gestión" },
-  { front: "Criterios de Entrada (Definition of Ready)", back: "Condiciones para INICIAR las pruebas:\n- Entorno disponible\n- Código entregado\n- Datos de prueba listos\n- Herramientas configuradas", category: "Gestión" },
-  { front: "Criterios de Salida (Definition of Done)", back: "Condiciones para FINALIZAR las pruebas:\n- Cobertura alcanzada\n- Defectos abiertos dentro del umbral\n- Pruebas planificadas ejecutadas\n- Riesgos residuales aceptados", category: "Gestión" }
+
+  // ── Fundamentos ──────────────────────────────────────────
+  {
+    front: "Error → Defecto → Fallo",
+    back: "👤 ERROR: el dev escribe calcularIVA(precio*0.16) en lugar de *0.19\n🐛 DEFECTO: el código incorrecto queda en producción\n💥 FALLO: el recibo muestra precio equivocado al usuario",
+    category: "Fundamentos"
+  },
+  {
+    front: "Prueba vs Depuración",
+    back: "🔍 PRUEBA (QA): ejecuta el pago con tarjeta vencida → el sistema no lo rechaza → reporta bug #482\n🔧 DEPURACIÓN (Dev): abre el código, encuentra que falta validar la fecha, corrige y hace PR",
+    category: "Fundamentos"
+  },
+  {
+    front: "Validación vs Verificación",
+    back: "✅ VERIFICACIÓN: el login acepta max 20 caracteres tal como dice el requisito\n🎯 VALIDACIÓN: los usuarios en beta no pueden recordar contraseñas de 20 caracteres — el requisito era incorrecto",
+    category: "Fundamentos"
+  },
+  {
+    front: "Causa Raíz de un defecto",
+    back: "🔎 EFECTO: los clientes reciben cobros duplicados\n🐛 DEFECTO: el botón 'Pagar' no se desactiva tras el primer click\n🧠 CAUSA RAÍZ: requisito ambiguo — el equipo no especificó el manejo de doble-click\n→ Eliminar la causa raíz evita que se repita",
+    category: "Fundamentos"
+  },
+  {
+    front: "Objetivos de las pruebas",
+    back: "Las pruebas NO solo buscan fallos. También:\n✓ Generar confianza en la calidad\n✓ Proporcionar info para decisiones informadas\n✓ Prevenir defectos (diseñar con calidad desde el inicio)\n✓ Verificar requisitos y validar necesidades del usuario",
+    category: "Fundamentos"
+  },
+
+  // ── 7 Principios ─────────────────────────────────────────
+  {
+    front: "Principio 1: Las pruebas muestran...",
+    back: "...la PRESENCIA de defectos, NO su ausencia.\n\nEjemplo: Aunque las 500 pruebas de regresión pasen, el módulo de pagos puede tener un bug no cubierto.\n→ Nunca digas 'el sistema está libre de errores'",
+    category: "7 Principios"
+  },
+  {
+    front: "Principio 2: Pruebas exhaustivas imposibles",
+    back: "Un campo de texto con 255 caracteres posibles × mayúsculas/minúsculas × combinaciones = millones de entradas.\n→ Solución: Partición de equivalencia + AVL + análisis de riesgo para enfocar dónde probar",
+    category: "7 Principios"
+  },
+  {
+    front: "Principio 3: Pruebas tempranas (Shift Left)",
+    back: "💰 Costo de corregir un defecto:\n• En requisitos: $1\n• En diseño: $10\n• En código: $100\n• En producción: $1,000+\n→ Revisa los requisitos ANTES de escribir código",
+    category: "7 Principios"
+  },
+  {
+    front: "Principio 4: Agrupación de defectos",
+    back: "En un e-commerce típico:\n• Módulo de pagos → 60% de los bugs\n• Módulo de carrito → 25% de los bugs\n• Módulo de catálogo → 15% restante\n→ Concentra las pruebas en pagos y carrito (regla 80/20)",
+    category: "7 Principios"
+  },
+  {
+    front: "Principio 5: Paradoja del pesticida",
+    back: "Si tus 200 pruebas de regresión llevan 6 meses sin encontrar bugs nuevos, el software 'se inmunizó'.\n→ Agrega nuevos escenarios, varía los datos, usa prueba exploratoria para descubrir zonas nuevas",
+    category: "7 Principios"
+  },
+  {
+    front: "Principio 6: Pruebas contextuales",
+    back: "App bancaria: énfasis en seguridad, exactitud, auditoría, certificaciones\nApp de videojuegos: énfasis en rendimiento, compatibilidad, experiencia de usuario\nApp médica (marcapasos): énfasis en fiabilidad, IEC 62304, pruebas de seguridad funcional\n→ El contexto define el enfoque",
+    category: "7 Principios"
+  },
+  {
+    front: "Principio 7: Falacia de ausencia de errores",
+    back: "Un banco lanzó un sistema de inversiones sin bugs técnicos.\nLos usuarios lo abandonaron porque la interfaz era incomprensible.\n→ Cero defectos técnicos no garantiza éxito. También debes validar usabilidad y valor de negocio.",
+    category: "7 Principios"
+  },
+
+  // ── Proceso de Prueba ────────────────────────────────────
+  {
+    front: "7 Actividades del Proceso de Prueba",
+    back: "1. Planificación\n2. Monitorización y Control\n3. Análisis (¿QUÉ probar?)\n4. Diseño (¿CÓMO probar?)\n5. Implementación (organizar, preparar entorno)\n6. Ejecución\n7. Compleción (informe final, lecciones aprendidas)",
+    category: "Proceso de Prueba"
+  },
+  {
+    front: "Análisis vs Diseño de Prueba",
+    back: "📋 ANÁLISIS responde: ¿QUÉ probar?\nEj: 'Probar que el campo edad acepta solo valores entre 18 y 65'\n\n✏️ DISEÑO responde: ¿CÓMO probarlo?\nEj: Casos: edad=17 (inválido), edad=18 (válido), edad=65 (válido), edad=66 (inválido)",
+    category: "Proceso de Prueba"
+  },
+  {
+    front: "Plan de Prueba — contenido clave",
+    back: "✓ Objetivos y alcance\n✓ Enfoque (niveles, tipos, técnicas)\n✓ Criterios de entrada y salida\n✓ Recursos (personas, entornos, herramientas)\n✓ Calendario y estimaciones\n✓ Riesgos y contingencias\n✓ Métricas e informes",
+    category: "Proceso de Prueba"
+  },
+  {
+    front: "Compleción de Prueba — ¿qué se hace?",
+    back: "Al cerrar un ciclo de prueba:\n✓ Verificar que los criterios de salida están cumplidos\n✓ Archivar casos de prueba, datos y entornos\n✓ Entregar el informe de compleción\n✓ Recopilar lecciones aprendidas\n✓ Cerrar los defectos abiertos o trasladarlos",
+    category: "Proceso de Prueba"
+  },
+
+  // ── Niveles de Prueba ────────────────────────────────────
+  {
+    front: "Prueba de Componente (Unitaria)",
+    back: "¿Qué: una función aislada\nEjemplo: probar calcularDescuento(precio, porcentaje) con:\n• precio=100, pct=20 → espera 80\n• precio=0, pct=50 → espera 0\n• precio=-5 → manejo de error\nQuién: el desarrollador. Herramienta: JUnit, pytest, Jest",
+    category: "Niveles de Prueba"
+  },
+  {
+    front: "Prueba de Integración de Componentes",
+    back: "¿Qué: la interfaz entre módulos\nEjemplo: el módulo 'Carrito' llama al módulo 'Inventario'.\n¿Devuelve correctamente el stock disponible?\n¿Qué ocurre si Inventario no responde en 2s?\nNo se prueba el carrito solo ni el inventario solo",
+    category: "Niveles de Prueba"
+  },
+  {
+    front: "Prueba de Sistema",
+    back: "¿Qué: el sistema completo end-to-end\nEjemplo: Usuario busca producto → agrega al carrito → paga con tarjeta → recibe email de confirmación → el inventario se actualiza\n→ Simula el flujo real del negocio. Incluye funcional y no funcional.",
+    category: "Niveles de Prueba"
+  },
+  {
+    front: "Prueba de Aceptación (UAT)",
+    back: "¿Quién: el cliente o usuarios finales\nEjemplo en banca: el área de cumplimiento verifica que el sistema genera reportes IFRS correctos.\nEl CEO prueba que el dashboard ejecutivo muestra los KPIs acordados.\n→ Valida si el sistema satisface las necesidades del negocio",
+    category: "Niveles de Prueba"
+  },
+  {
+    front: "Prueba Alfa vs Beta",
+    back: "🏢 ALFA: usuarios reales prueban en las instalaciones del desarrollador con supervisión\nEj: empleados del banco prueban la nueva app en la oficina del proveedor\n\n🏠 BETA: usuarios reales prueban en su propio entorno sin supervisión\nEj: 500 clientes seleccionados usan la app en sus celulares durante 30 días",
+    category: "Niveles de Prueba"
+  },
+
+  // ── Tipos de Prueba ──────────────────────────────────────
+  {
+    front: "Prueba Funcional vs No Funcional",
+    back: "✅ FUNCIONAL: ¿Hace lo que debe?\nEj: El botón 'Pagar' procesa el pago correctamente\n\n⚡ NO FUNCIONAL: ¿Qué tan bien lo hace?\nEj: El pago se procesa en menos de 2 segundos con 10,000 usuarios simultáneos\nEj: El sistema cifra los datos de la tarjeta (seguridad)",
+    category: "Tipos de Prueba"
+  },
+  {
+    front: "Prueba de Confirmación vs Regresión",
+    back: "🔁 CONFIRMACIÓN: el bug #482 decía que no se rechazaban tarjetas vencidas.\nDespués del fix: prueba específicamente ese escenario → ¿ya se rechaza? ✓\n\n🌊 REGRESIÓN: después del fix ¿el pago con tarjeta válida sigue funcionando? ¿Y el pago en cuotas? → Verificar que nada rompió",
+    category: "Tipos de Prueba"
+  },
+  {
+    front: "Prueba de Caja Negra vs Blanca",
+    back: "⬛ CAJA NEGRA: pruebas el campo 'precio' con distintos valores sin ver el código.\nTécnicas: PE, AVL, tablas de decisión\n\n⬜ CAJA BLANCA: revisas que tu prueba ejecuta el IF del descuento en ambas ramas (verdadero/falso).\nTécnicas: cobertura de sentencias, cobertura de decisiones",
+    category: "Tipos de Prueba"
+  },
+
+  // ── Técnicas ─────────────────────────────────────────────
+  {
+    front: "Partición de Equivalencia — ejemplo",
+    back: "Campo 'edad' del seguro (18–65):\n❌ Inválida A: valores < 18 → probar ej. 15\n✅ Válida: 18 a 65 → probar ej. 40\n❌ Inválida B: valores > 65 → probar ej. 70\n→ 3 particiones = mínimo 3 casos de prueba\nPrueba 1 valor representativo de cada partición",
+    category: "Técnicas"
+  },
+  {
+    front: "AVL de 2 valores — ejemplo",
+    back: "Campo precio (mín: $1, máx: $9,999):\nLímite inferior → probar $0 y $1\nLímite superior → probar $9,999 y $10,000\n→ 4 casos de prueba para los bordes\nLos bordes concentran más defectos que el interior",
+    category: "Técnicas"
+  },
+  {
+    front: "Tabla de Decisión — cuándo usarla",
+    back: "Regla de descuento de una tienda:\n• ¿Cliente VIP? S/N\n• ¿Compra > $500? S/N\n→ 4 combinaciones (2²)\nSS: 20% | SN: 10% | NS: 5% | NN: 0%\nIdeal cuando el comportamiento depende de combinaciones de condiciones",
+    category: "Técnicas"
+  },
+  {
+    front: "Transición de Estados — ejemplo ATM",
+    back: "Estados: REPOSO → TARJETA_INSERTADA → PIN_INGRESADO → OPERANDO → REPOSO\nEventos: insertar tarjeta / ingresar PIN / seleccionar operación / finalizar\nPrueba: ¿qué ocurre si ingresas el PIN incorrecto 3 veces? → Estado: BLOQUEADO\n→ Útil para sistemas reactivos que cambian de estado",
+    category: "Técnicas"
+  },
+  {
+    front: "Cobertura de Decisiones vs Sentencias",
+    back: "Código:\nif (edad >= 18) { mostrarContenido(); }\nreturn;\n\n100% SENTENCIAS: ejecutar con edad=20 → ambas líneas cubiertas ✓\n100% DECISIONES: necesitas edad=20 (IF=true) Y edad=15 (IF=false) → más exigente\n→ 100% decisiones garantiza 100% sentencias, no viceversa",
+    category: "Técnicas"
+  },
+  {
+    front: "Prueba Exploratoria",
+    back: "CARTA DE PRUEBA:\n🎯 Objetivo: explorar el flujo de checkout en móvil con conexión lenta\n⏱ Duración: 45 minutos\n📱 Entorno: iPhone 13, red 3G\n\nEl probador diseña Y ejecuta en simultáneo, aprende del sistema.\nDocumenta hallazgos y defectos en la sesión.\nÚtil cuando hay poca documentación o tiempo escaso.",
+    category: "Técnicas"
+  },
+  {
+    front: "Adivinación de Errores (Error Guessing)",
+    back: "Basada en EXPERIENCIA del probador.\nEj. para un formulario de login:\n• Campo vacío en usuario/contraseña\n• Espacios al inicio/final del usuario\n• Caracteres especiales: ', --, <script>\n• Login con cuenta bloqueada\n• 100 intentos fallidos seguidos\n→ Se formaliza con 'listas de defectos' históricas",
+    category: "Técnicas"
+  },
+
+  // ── Prueba Estática ──────────────────────────────────────
+  {
+    front: "Tipos de Revisión (orden de formalidad)",
+    back: "Menor formalidad → Mayor formalidad:\n1. Revisión Informal (buddy check, sin proceso)\n2. Revisión Guiada / Walkthrough (el autor guía)\n3. Revisión Técnica (moderador, puede ser el autor)\n4. Inspección (moderador certificado, métricas, la más formal)",
+    category: "Prueba Estática"
+  },
+  {
+    front: "Inspección — roles y proceso",
+    back: "Roles: Moderador certificado · Autor · Revisores · Escriba · Líder de inspección\n\nProceso:\n1. Planificación\n2. Inicio (criteria de entrada)\n3. Revisión individual\n4. Reunión de inspección\n5. Correción\n6. Seguimiento (criterios de salida + métricas)",
+    category: "Prueba Estática"
+  },
+  {
+    front: "¿Qué detecta el análisis estático?",
+    back: "Sin ejecutar el código, herramientas como SonarQube detectan:\n• Variables no inicializadas\n• Código muerto (nunca se ejecuta)\n• Complejidad ciclomática elevada (>10 → difícil de mantener)\n• Vulnerabilidades: SQL injection, XSS, buffer overflow\n• Violaciones de estándares de codificación",
+    category: "Prueba Estática"
+  },
+
+  // ── Gestión ──────────────────────────────────────────────
+  {
+    front: "Severidad vs Prioridad",
+    back: "Bug: el logo de la empresa aparece pixelado en la homepage\n📊 SEVERIDAD: Baja (es cosmético, no afecta funcionalidad)\n🚨 PRIORIDAD: Alta (el CEO presenta el sitio a inversores mañana)\n\n→ Severidad = impacto técnico (asigna QA)\n→ Prioridad = urgencia de negocio (asigna PO/cliente)",
+    category: "Gestión"
+  },
+  {
+    front: "Riesgo de Producto vs Proyecto",
+    back: "🛍️ RIESGO DE PRODUCTO (¿qué puede fallar en el sistema?):\n• Módulo de pagos con lógica compleja heredada\n• Integración nueva con API bancaria sin documentación\n\n🗂️ RIESGO DE PROYECTO (¿qué puede afectar al equipo?):\n• El QA Senior renuncia la semana del lanzamiento\n• El proveedor entrega el entorno tarde",
+    category: "Gestión"
+  },
+  {
+    front: "Criterios de Entrada (DoR)",
+    back: "Antes de empezar a probar el módulo de pagos:\n✓ Entorno de prueba configurado (staging activo)\n✓ Build 2.3.1 desplegado y smoke test OK\n✓ Datos de tarjetas de prueba disponibles\n✓ Casos de prueba revisados y aprobados\n✓ Herramienta de defectos (Jira) accesible",
+    category: "Gestión"
+  },
+  {
+    front: "Criterios de Salida (DoD)",
+    back: "Para cerrar el ciclo de pruebas de sistema:\n✓ 95% de los casos planificados ejecutados\n✓ 100% de defectos críticos y altos resueltos\n✓ Defectos medios abiertos ≤ 5 (documentados y aceptados)\n✓ Cobertura de requisitos ≥ 90%\n✓ Informe de prueba entregado y aprobado",
+    category: "Gestión"
+  },
+  {
+    front: "Reporte de Defecto — campos obligatorios",
+    back: "ID único · Fecha · Autor\nTítulo descriptivo (qué, dónde, cuándo)\nPasos para reproducir (numerados, precisos)\nResultado esperado vs resultado real\nSeveridad + Prioridad\nEntorno (OS, browser, versión)\nEvidencia (screenshot, video, log)\nEstado: Nuevo → Asignado → En proceso → Resuelto → Cerrado",
+    category: "Gestión"
+  },
+
+  // ── Agile ────────────────────────────────────────────────
+  {
+    front: "TDD — ciclo Red-Green-Refactor",
+    back: "🔴 RED: escribe un test que FALLA\nEj: test_calcular_iva() espera 119, el código retorna 0 → FALLA\n\n🟢 GREEN: escribe el MÍNIMO código para pasarlo\nEj: return precio * 1.19\n\n🔵 REFACTOR: mejora el código sin romper el test",
+    category: "Agile"
+  },
+  {
+    front: "ATDD y BDD",
+    back: "ATDD (Acceptance Test Driven Development):\nEl cliente, QA y dev definen criterios de aceptación ANTES de codificar\n\nBDD (Behavior Driven Development) — lenguaje Gherkin:\nGiven el usuario está en la página de login\nWhen ingresa usuario='admin' y clave='admin123'\nThen debe ver el dashboard principal",
+    category: "Agile"
+  },
+  {
+    front: "Cuadrantes de Prueba Ágil",
+    back: "Q1 (↙ Tecnología + Soporte): unitarias, integración, TDD\nQ2 (↘ Negocio + Soporte): funcionales, criterios de aceptación\nQ3 (↗ Negocio + Crítica): exploratorias, usabilidad, UAT\nQ4 (↖ Tecnología + Crítica): rendimiento, seguridad, fiabilidad\n→ Un buen equipo ágil cubre los 4 cuadrantes",
+    category: "Agile"
+  },
+
+  // ── Herramientas ─────────────────────────────────────────
+  {
+    front: "Herramientas por categoría",
+    back: "📋 Gestión: TestRail, Zephyr, Azure Test Plans\n🐛 Defectos: Jira, GitHub Issues, Bugzilla\n⚙️ Automatización UI: Selenium, Cypress, Playwright\n⚙️ Unitarias: JUnit, pytest, Jest\n📈 Rendimiento: JMeter, k6, Gatling\n🔍 Análisis estático: SonarQube, ESLint, Pylint",
+    category: "Herramientas"
+  },
+  {
+    front: "Beneficios vs Riesgos de la automatización",
+    back: "✅ BENEFICIOS:\n• Regresión más rápida y frecuente\n• Consistencia (no hay 'olvidos humanos')\n• Posibilita pruebas de carga (imposibles manualmente)\n\n⚠️ RIESGOS:\n• Inversión inicial alta (scripts, infraestructura)\n• Mantenimiento costoso cuando el sistema cambia\n• No reemplaza la prueba exploratoria",
+    category: "Herramientas"
+  },
+  {
+    front: "¿Qué NO se puede automatizar bien?",
+    back: "❌ Pruebas exploratorias (requieren intuición y aprendizaje en tiempo real)\n❌ Pruebas de usabilidad (¿es fácil de usar para un humano?)\n❌ Pruebas de aceptación de usuario final (UAT)\n❌ Pruebas ad hoc basadas en experiencia del QA\n→ Automatiza lo estable y repetitivo; mantén lo humano para lo cognitivo",
+    category: "Herramientas"
+  }
+];
+
+// ============================================================
+// PLANTILLAS PROFESIONALES DE QA
+// ============================================================
+const TEMPLATES = [
+  {
+    id: "bug-report",
+    title: "Reporte de Defecto",
+    icon: "🐛",
+    color: "#f43f5e",
+    description: "Documenta defectos de forma estandarizada para que el equipo de desarrollo pueda reproducirlos y corregirlos eficientemente.",
+    tags: ["ISTQB", "Gestión de Defectos", "Esencial"],
+    fields: [
+      { label: "ID del Defecto",        type: "text",     placeholder: "DEF-001", tip: "Identificador único. Usa el formato de tu herramienta (ej. Jira: BUG-142)." },
+      { label: "Título",                type: "text",     placeholder: "Breve descripción del defecto (qué + dónde)", tip: "Sé específico: 'El botón Pagar no se deshabilita al hacer doble click en checkout'" },
+      { label: "Módulo / Área",         type: "text",     placeholder: "Ej: Carrito de compras / Proceso de pago", tip: "Ubica exactamente dónde ocurre el problema." },
+      { label: "Pasos para reproducir", type: "textarea", placeholder: "1. Ir a...\n2. Hacer click en...\n3. Ingresar...\n4. Observar que...", tip: "Cada paso debe ser preciso y reproducible. Otro QA sin contexto debe poder seguirlos." },
+      { label: "Resultado esperado",    type: "textarea", placeholder: "Qué debería ocurrir según los requisitos o la lógica del negocio", tip: "Basado en los criterios de aceptación o en el comportamiento lógico esperado." },
+      { label: "Resultado real",        type: "textarea", placeholder: "Qué ocurre en realidad (describe exactamente lo observado)", tip: "Describe el comportamiento incorrecto con precisión. Evita 'no funciona'." },
+      { label: "Severidad",             type: "select",   options: ["Crítica — sistema inoperativo o pérdida de datos", "Alta — funcionalidad clave afectada, sin workaround", "Media — funcionalidad parcial, existe workaround", "Baja — cosmético o molestia menor"], tip: "La asigna el equipo de QA según el impacto técnico." },
+      { label: "Prioridad",             type: "select",   options: ["Urgente — corregir de inmediato", "Alta — próximo sprint", "Media — planificar en backlog", "Baja — cuando haya disponibilidad"], tip: "La asigna el Product Owner según el impacto para el negocio." },
+      { label: "Entorno",               type: "text",     placeholder: "SO: Windows 11 | Browser: Chrome 124 | Build: 2.3.1 | URL: staging.app.com", tip: "Sin el entorno, el dev puede decir 'en mi máquina funciona'." },
+      { label: "Adjuntos / Evidencia",  type: "text",     placeholder: "screenshot_checkout_error.png | video_defecto.mp4 | console_log.txt", tip: "Una imagen vale más que mil palabras. Video si el bug es intermitente." }
+    ],
+    example: {
+      title: "Ejemplo completado — Sistema de e-commerce",
+      fields: {
+        "ID del Defecto": "BUG-247",
+        "Título": "El botón 'Confirmar Compra' procesa el pago dos veces al hacer doble click",
+        "Módulo / Área": "Checkout / Paso 3: Confirmación de pago",
+        "Pasos para reproducir": "1. Iniciar sesión con usuario test@correo.com\n2. Agregar cualquier producto al carrito\n3. Completar los pasos 1 y 2 del checkout (dirección y envío)\n4. En el paso 3, ingresar tarjeta de prueba: 4111-1111-1111-1111\n5. Hacer DOBLE CLICK rápido sobre el botón 'Confirmar Compra'\n6. Esperar la respuesta del sistema",
+        "Resultado esperado": "El pago se procesa una sola vez. El botón debe deshabilitarse o mostrar un spinner tras el primer click para prevenir clicks duplicados.",
+        "Resultado real": "El sistema procesa el cobro dos veces. El usuario recibe dos emails de confirmación con números de orden distintos y su tarjeta es debitada dos veces por el mismo monto.",
+        "Severidad": "Alta — funcionalidad clave afectada, sin workaround",
+        "Prioridad": "Urgente — corregir de inmediato",
+        "Entorno": "SO: macOS Sonoma 14.4 | Browser: Chrome 124.0.6367.119 | Build: 2.3.1 | URL: staging.tienda.com",
+        "Adjuntos / Evidencia": "video_doble_pago.mp4 | screenshot_dos_emails.png | network_log_duplicate_request.har"
+      }
+    }
+  },
+
+  {
+    id: "test-case",
+    title: "Caso de Prueba",
+    icon: "📋",
+    color: "#3b82f6",
+    description: "Define de forma precisa qué probar, cómo probarlo y qué resultado esperar. Base de la ejecución de pruebas.",
+    tags: ["ISTQB", "Diseño de Prueba", "Esencial"],
+    fields: [
+      { label: "ID del Caso",           type: "text",     placeholder: "TC-001", tip: "Identificador único. Prefijo según el módulo: CP-001 (pagos), AU-001 (autenticación)." },
+      { label: "Título",                type: "text",     placeholder: "Describe el escenario: Qué + Condición + Resultado esperado", tip: "Ej: 'Login exitoso con credenciales válidas de usuario activo'" },
+      { label: "Objetivo / Propósito",  type: "textarea", placeholder: "¿Qué aspecto del sistema valida este caso de prueba?", tip: "Relaciona el caso con un requisito o historia de usuario específica." },
+      { label: "Precondiciones",        type: "textarea", placeholder: "Estado del sistema que debe existir ANTES de ejecutar la prueba", tip: "Ej: 'El usuario admin@test.com debe existir en la base de datos con estado Activo'" },
+      { label: "Datos de entrada",      type: "textarea", placeholder: "Todos los datos necesarios para ejecutar la prueba", tip: "Sé específico: usuario='admin@test.com', contraseña='Test@1234', rol='Admin'" },
+      { label: "Pasos de ejecución",    type: "textarea", placeholder: "1. Navegar a...\n2. Ingresar en el campo Usuario...\n3. Ingresar en el campo Contraseña...\n4. Hacer click en Iniciar Sesión\n5. Verificar...", tip: "Cada paso debe ser atómico y ejecutable sin ambigüedad." },
+      { label: "Resultado esperado",    type: "textarea", placeholder: "Estado final del sistema si la prueba pasa", tip: "Debe ser verificable y específico: '¿Aparece el elemento X? ¿Cambia el URL a /dashboard?'" },
+      { label: "Criterio de éxito / fallo", type: "textarea", placeholder: "¿Cómo determines si el caso pasó o falló?", tip: "Ej: PASA si el usuario ve el dashboard en < 3 segundos. FALLA si aparece mensaje de error o redirección incorrecta." },
+      { label: "Nivel de prueba",       type: "select",   options: ["Componente (Unitaria)", "Integración de Componentes", "Sistema", "Aceptación (UAT)"], tip: "¿En qué nivel del ciclo de vida se ejecuta este caso?" },
+      { label: "Tipo de prueba",        type: "select",   options: ["Funcional", "No funcional — Rendimiento", "No funcional — Seguridad", "No funcional — Usabilidad", "Regresión", "Humo (Smoke)"], tip: "¿Qué atributo de calidad valida este caso?" },
+      { label: "Prioridad",             type: "select",   options: ["Alta — crítico para el negocio", "Media — funcionalidad importante", "Baja — escenario alternativo o edge case"], tip: "Define el orden de ejecución cuando hay restricciones de tiempo." },
+      { label: "Autor / Fecha",         type: "text",     placeholder: "Juan QA | 2025-06-03", tip: "Para trazabilidad y auditoría del caso de prueba." }
+    ],
+    example: {
+      title: "Ejemplo completado — Sistema bancario online",
+      fields: {
+        "ID del Caso": "AU-012",
+        "Título": "Login fallido con contraseña incorrecta bloquea la cuenta tras 3 intentos",
+        "Objetivo / Propósito": "Verificar que el mecanismo de seguridad bloquea temporalmente una cuenta cuando se ingresan 3 contraseñas incorrectas consecutivas, previniendo ataques de fuerza bruta.",
+        "Precondiciones": "1. El usuario juan@banco.com existe en la BD con estado 'Activo'\n2. El contador de intentos fallidos del usuario está en 0\n3. El entorno de prueba está operativo (staging.banco.com)\n4. La aplicación está en versión 3.1.2",
+        "Datos de entrada": "Usuario: juan@banco.com\nContraseña incorrecta: 'claveErronea123' (3 veces)\nContraseña correcta (para verificar bloqueo): 'ClaveCorrecta@456'",
+        "Pasos de ejecución": "1. Navegar a staging.banco.com/login\n2. Ingresar 'juan@banco.com' en campo Usuario\n3. Ingresar 'claveErronea123' en campo Contraseña\n4. Hacer click en 'Iniciar Sesión' → verificar mensaje de error\n5. Repetir pasos 3-4 una segunda vez\n6. Repetir pasos 3-4 una tercera vez\n7. Intentar login con la contraseña CORRECTA 'ClaveCorrecta@456'\n8. Verificar estado de la cuenta en panel de administración",
+        "Resultado esperado": "Tras el 3er intento fallido:\n• El sistema muestra: 'Tu cuenta ha sido bloqueada por 15 minutos por seguridad'\n• El intento con contraseña correcta también es rechazado (cuenta bloqueada)\n• El panel admin muestra la cuenta con estado 'Bloqueada temporalmente'\n• Se envía email de alerta a juan@banco.com",
+        "Criterio de éxito / fallo": "PASA: Los 4 criterios del resultado esperado se cumplen\nFALLA: Si el sistema permite el acceso con contraseña correcta después de 3 intentos fallidos, o si no muestra el mensaje de bloqueo, o si el email no se envía",
+        "Nivel de prueba": "Sistema",
+        "Tipo de prueba": "No funcional — Seguridad",
+        "Prioridad": "Alta — crítico para el negocio",
+        "Autor / Fecha": "María QA Senior | 2025-06-03"
+      }
+    }
+  },
+
+  {
+    id: "test-charter",
+    title: "Carta de Prueba Exploratoria",
+    icon: "🔍",
+    color: "#8b5cf6",
+    description: "Documenta el objetivo y alcance de una sesión de prueba exploratoria. Guía al probador sin restringir su creatividad.",
+    tags: ["Exploratoria", "Ágil", "Técnicas ISTQB"],
+    fields: [
+      { label: "ID de la Carta",        type: "text",     placeholder: "TC-EXP-001", tip: "Identificador para rastrear las sesiones de prueba exploratoria." },
+      { label: "Objetivo de la sesión", type: "textarea", placeholder: "¿Qué aspecto del sistema quieres explorar y aprender?", tip: "Empieza con 'Explorar...' o 'Investigar...'. No limites los resultados esperados." },
+      { label: "Área de enfoque",       type: "text",     placeholder: "Módulo o funcionalidad específica", tip: "Delimita el alcance sin ser demasiado restrictivo. Ej: 'Flujo de registro de nuevo usuario'" },
+      { label: "Entorno / Configuración", type: "text",   placeholder: "Dispositivo, SO, browser, versión, red, datos específicos", tip: "Especifica condiciones especiales si las hay (modo offline, usuario sin permisos, datos inusuales)." },
+      { label: "Duración",              type: "text",     placeholder: "45 minutos", tip: "Sesiones de 45-90 min son óptimas. Más tiempo reduce la concentración." },
+      { label: "Ideas de prueba iniciales", type: "textarea", placeholder: "Lista de áreas o escenarios que quieres explorar al inicio de la sesión", tip: "No es exhaustivo. Son pistas de partida, no una lista cerrada." },
+      { label: "Hallazgos y notas de sesión", type: "textarea", placeholder: "Completa DURANTE la sesión: qué exploraste, qué encontraste, qué fue sorprendente", tip: "Escribe en tiempo real. Incluye comportamientos inesperados aunque no sean bugs formales." },
+      { label: "Defectos encontrados",  type: "textarea", placeholder: "Lista de IDs de defectos reportados durante la sesión", tip: "Referencia los IDs de los bugs que abriste en Jira u otra herramienta." },
+      { label: "Métricas de la sesión", type: "text",     placeholder: "Tiempo: 45min | Área cubierta: 70% | Bugs: 3 (1 alto, 2 bajo)", tip: "Para medir la efectividad de tus sesiones exploratorias a lo largo del tiempo." },
+      { label: "Áreas para explorar más", type: "textarea", placeholder: "¿Qué quedó pendiente? ¿Qué preguntas nuevas surgieron?", tip: "Las mejores preguntas nacen durante la exploración. Documenta para futuras sesiones." }
+    ],
+    example: {
+      title: "Ejemplo completado — App de delivery de comida",
+      fields: {
+        "ID de la Carta": "TC-EXP-008",
+        "Objetivo de la sesión": "Explorar el comportamiento del flujo de pedido cuando hay condiciones inesperadas: restaurante cerrado, producto agotado, dirección fuera de zona de cobertura y conexión intermitente.",
+        "Área de enfoque": "Flujo de realización de pedido (desde selección de restaurante hasta confirmación)",
+        "Entorno / Configuración": "iPhone 14, iOS 17.4, App v2.1.0 | Red: simular 3G con throttling | Usuario: cliente_test@mail.com (sin pedidos previos) | Hora: simular las 23:45 (cerca del horario de cierre de restaurantes)",
+        "Duración": "60 minutos",
+        "Ideas de prueba iniciales": "• ¿Qué pasa si agrego un producto y el restaurante cierra mientras tengo el carrito abierto?\n• ¿Puedo hacer un pedido a una dirección en otra ciudad?\n• ¿Qué ocurre si la app pierde conexión durante la confirmación del pago?\n• ¿Puedo agregar más de 99 unidades del mismo producto?\n• ¿Cómo maneja el sistema un producto que se agota mientras lo estoy viendo?",
+        "Hallazgos y notas de sesión": "00:05 - Al poner una dirección fuera de cobertura, el mapa carga pero el botón Confirmar no aparece (bug potencial: sin mensaje de error claro)\n00:18 - Al cambiar hora del sistema a 23:55, el restaurante 'Pizzería Roma' aparece como disponible aunque cierra a las 23:00 → BUG REPORTADO\n00:31 - Con throttling 3G, el spinner de carga se muestra indefinidamente sin timeout → BUG REPORTADO\n00:45 - Al agregar 100 unidades, la app crashea → BUG CRÍTICO REPORTADO\n00:55 - El campo de instrucciones especiales acepta hasta 500 caracteres pero la pantalla del repartidor solo muestra 50 → inconsistencia",
+        "Defectos encontrados": "BUG-389: Restaurante cerrado aparece disponible (Severidad: Alta)\nBUG-390: Spinner infinito sin timeout en conexión lenta (Severidad: Media)\nBUG-391: App crashea al agregar 100+ unidades de un producto (Severidad: Crítica)\nNOTA-12: Inconsistencia en longitud de instrucciones especiales (pendiente definir como bug)",
+        "Métricas de la sesión": "Tiempo real: 60min | Área cubierta: ~65% del flujo | Bugs encontrados: 3 (1 crítico, 1 alto, 1 medio) | 1 nota pendiente de decisión",
+        "Áreas para explorar más": "• ¿Qué pasa si el repartidor cancela el pedido a mitad del camino?\n• ¿Cómo maneja pedidos con múltiples restaurantes (si la app lo permite)?\n• ¿El historial de pedidos se corrompe tras el crash de 100+ unidades?\n• Probar el flujo completo con usuario sin tarjeta guardada"
+      }
+    }
+  },
+
+  {
+    id: "test-plan",
+    title: "Plan de Prueba",
+    icon: "📊",
+    color: "#10b981",
+    description: "Documento estratégico que define objetivos, alcance, enfoque, recursos y calendario de las actividades de prueba para un proyecto.",
+    tags: ["ISTQB", "Gestión", "Planificación"],
+    fields: [
+      { label: "Proyecto / Sistema",    type: "text",     placeholder: "Nombre del sistema bajo prueba y versión", tip: "Identifica claramente qué sistema y versión se va a probar." },
+      { label: "Alcance — Qué se prueba", type: "textarea", placeholder: "Funcionalidades y módulos incluidos en este ciclo de pruebas", tip: "Sé explícito sobre qué está IN SCOPE para evitar malentendidos con stakeholders." },
+      { label: "Fuera de alcance",      type: "textarea", placeholder: "Qué NO se va a probar en este ciclo (y por qué)", tip: "Documentar explícitamente qué excluyes es tan importante como documentar qué incluyes." },
+      { label: "Objetivos de prueba",   type: "textarea", placeholder: "¿Qué quieres demostrar o verificar con estas pruebas?", tip: "Ej: 'Verificar que los 15 requisitos del módulo de pagos se cumplen al 100%'" },
+      { label: "Niveles y tipos de prueba", type: "textarea", placeholder: "¿Qué niveles (componente, sistema, UAT) y tipos (funcional, rendimiento) se ejecutarán?", tip: "Relaciona cada nivel con su responsable y herramienta." },
+      { label: "Técnicas de diseño",    type: "textarea", placeholder: "Técnicas que usarás para diseñar los casos de prueba", tip: "Ej: PE y AVL para campos numéricos, Tablas de decisión para reglas de negocio complejas" },
+      { label: "Entorno de prueba",     type: "textarea", placeholder: "Descripción del entorno: servidores, browsers, datos, herramientas", tip: "Especifica si usarás mocks, entorno staging, datos anonimizados de producción, etc." },
+      { label: "Criterios de entrada",  type: "textarea", placeholder: "Condiciones que deben cumplirse para COMENZAR las pruebas", tip: "Sin estos criterios, no se inicia la ejecución. Son la Definition of Ready del equipo de QA." },
+      { label: "Criterios de salida",   type: "textarea", placeholder: "Condiciones que deben cumplirse para DAR POR TERMINADAS las pruebas", tip: "Son la Definition of Done para el ciclo de pruebas." },
+      { label: "Recursos y roles",      type: "textarea", placeholder: "Quién hace qué: QA Lead, QA Senior, QA Junior, Automatizador", tip: "Asigna responsabilidades claras para evitar brechas en la cobertura." },
+      { label: "Calendario",            type: "textarea", placeholder: "Fases y fechas: diseño, preparación de entorno, ejecución, informe", tip: "Incluye hitos críticos y dependencias con otros equipos (dev, infra, cliente)." },
+      { label: "Riesgos y mitigaciones",type: "textarea", placeholder: "Riesgos identificados y cómo se mitigarán", tip: "Distingue riesgos de producto (bugs graves) de riesgos de proyecto (tiempo, recursos)." }
+    ],
+    example: {
+      title: "Ejemplo completado — App móvil de transporte",
+      fields: {
+        "Proyecto / Sistema": "RideApp Mobile — Versión 4.0.0 | Sprint 23 | Release: 15 de julio 2025",
+        "Alcance — Qué se prueba": "✓ Módulo de autenticación (registro, login, recuperación de contraseña)\n✓ Módulo de solicitud de viaje (mapa, selección destino, tipos de vehículo)\n✓ Módulo de pagos (tarjeta, wallet, efectivo)\n✓ Módulo de calificaciones (conductor y pasajero)\n✓ Notificaciones push (estado del viaje)",
+        "Fuera de alcance": "✗ Panel de administración web (prueba separada en Sprint 24)\n✗ Integración con terceros: Waze API y Google Maps (cubierta en Sprint 22)\n✗ Pruebas de carga (programadas para Sprint 25 con JMeter)\n✗ Dispositivos iOS < 15 (soporte discontinuado en esta versión)",
+        "Objetivos de prueba": "1. Verificar que los 47 requisitos funcionales del Sprint 23 se cumplen al 100%\n2. Validar que el flujo completo de viaje (solicitar → pagar → calificar) funciona en Android e iOS\n3. Verificar que el módulo de pagos cumple el estándar PCI DSS nivel 2\n4. Asegurar que no hay regresiones en el módulo de autenticación (estable desde Sprint 18)",
+        "Niveles y tipos de prueba": "Componente: desarrolladores (JUnit/XCTest) antes del merge\nIntegración: QA — interfaces entre módulos de viaje y pagos\nSistema Funcional: QA — flujos end-to-end en Android 14 / iOS 17\nSistema No Funcional: QA — rendimiento básico (tiempo de respuesta del mapa < 2s)\nAceptación: Product Owner + 5 usuarios beta seleccionados",
+        "Técnicas de diseño": "• Partición de Equivalencia + AVL: validaciones de formularios (monto de pago, campos de texto)\n• Tablas de Decisión: reglas de descuentos y promociones\n• Transición de Estados: flujo de estados del viaje (Solicitado→Asignado→EnCamino→Completado→Cancelado)\n• Prueba Exploratoria: flujo de pago en condiciones de red inestable",
+        "Entorno de prueba": "Dispositivos: Samsung Galaxy S24 (Android 14) + iPhone 15 (iOS 17.4)\nBackend: staging-api.rideapp.com (espejo de producción con datos anonimizados)\nPasarela de pago: Sandbox de Stripe (tarjetas de prueba)\nHerramientas: TestRail (gestión), Jira (defectos), Charles Proxy (interceptar tráfico), BrowserStack (dispositivos adicionales)",
+        "Criterios de entrada": "✓ Build 4.0.0-RC1 desplegado en TestFlight (iOS) y Google Play Internal (Android)\n✓ Smoke test de 15 casos críticos: PASSED\n✓ Ambiente staging operativo (uptime > 99% últimas 24h)\n✓ Datos de prueba cargados: 20 conductores ficticios, 10 rutas predefinidas\n✓ Casos de prueba diseñados y revisados por QA Lead",
+        "Criterios de salida": "✓ ≥ 95% de los 180 casos de prueba ejecutados\n✓ 100% de defectos críticos y altos resueltos y verificados\n✓ Defectos medios abiertos ≤ 8 (documentados y aceptados por PO)\n✓ UAT aprobada por Product Owner\n✓ Informe de prueba entregado y firmado",
+        "Recursos y roles": "QA Lead (Ana): planificación, revisión, métricas, informe final\nQA Senior (Carlos): casos de prueba de pagos y seguridad (40 casos)\nQA Mid (Laura): casos de autenticación y calificaciones (60 casos)\nQA Junior (Miguel): casos de notificaciones y casos de regresión (80 casos)\nAutomatizador (externo): 30 casos de regresión críticos en Appium",
+        "Calendario": "03 Jun: Revisión de criterios de entrada\n04–06 Jun: Diseño y revisión de casos de prueba\n07 Jun: Preparación del entorno y datos de prueba\n08–19 Jun: Ejecución de pruebas (2 semanas)\n20–21 Jun: UAT con Product Owner y beta users\n22 Jun: Re-prueba de defectos corregidos\n23 Jun: Informe final y aprobación para release\n15 Jul: Release a producción",
+        "Riesgos y mitigaciones": "🔴 Riesgo ALTO: la API de pagos Stripe puede tener cambios de última hora → Mitigación: confirmar compatibilidad con el equipo de backend el 05 Jun\n🟡 Riesgo MEDIO: el QA Senior tiene vacaciones la semana del 14 Jun → Mitigación: adelantar las pruebas de pagos a la primera semana\n🟡 Riesgo MEDIO: el ambiente staging puede ser inestable → Mitigación: coordinar ventana exclusiva de pruebas con el equipo de infraestructura"
+      }
+    }
+  }
 ];
 
 // ============================================================

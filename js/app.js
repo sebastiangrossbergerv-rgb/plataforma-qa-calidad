@@ -73,12 +73,14 @@ function navigate(view, params = {}) {
 function renderView(view, params) {
   const main = document.getElementById('mainContent');
   switch (view) {
-    case 'home': main.innerHTML = renderHome(); break;
-    case 'chapter': renderChapterView(params.id, main); break;
-    case 'quiz': renderQuizView(params.chapterId, main); break;
-    case 'exam': renderExamView(main); break;
-    case 'flashcards': renderFlashcardsView(main); break;
-    case 'glossary': renderGlossaryView(main); break;
+    case 'home':      main.innerHTML = renderHome(); break;
+    case 'chapter':   renderChapterView(params.id, main); break;
+    case 'quiz':      renderQuizView(params.chapterId, main); break;
+    case 'exam':      renderExamView(main); break;
+    case 'flashcards':renderFlashcardsView(main); break;
+    case 'glossary':  renderGlossaryView(main); break;
+    case 'templates': main.innerHTML = renderTemplatesView(); break;
+    case 'template-detail': main.innerHTML = renderTemplateDetail(params.id); break;
     default: main.innerHTML = renderHome();
   }
 }
@@ -753,6 +755,117 @@ function filterGlossary() {
   document.getElementById('glossaryList').innerHTML = renderGlossaryList(filtered);
 }
 
+// ---- TEMPLATES VIEW ----
+function renderTemplatesView() {
+  const cardsHTML = TEMPLATES.map(t => `
+    <div class="tpl-card" onclick="navigate('template-detail', {id: '${t.id}'})">
+      <div class="tpl-card-icon" style="background:${t.color}18; color:${t.color}">${t.icon}</div>
+      <div class="tpl-card-body">
+        <h3>${t.title}</h3>
+        <p>${t.description}</p>
+        <div class="tpl-tags">${t.tags.map(tag => `<span class="tpl-tag">${tag}</span>`).join('')}</div>
+      </div>
+      <div class="tpl-card-arrow">›</div>
+    </div>`).join('');
+
+  return `
+  <div class="templates-view">
+    <div class="tpl-header">
+      <h2>🗂️ Plantillas Profesionales de QA</h2>
+      <p>Documentos estándar de la industria basados en las mejores prácticas ISTQB. Cada plantilla incluye guías por campo y un ejemplo completado con un caso real.</p>
+    </div>
+    <div class="tpl-grid">${cardsHTML}</div>
+    <div class="tpl-note">
+      💡 <strong>Cómo usarlas:</strong> Estudia la estructura de cada plantilla y su ejemplo completado. En un examen ISTQB podrían preguntarte qué campos incluye un plan de prueba o un reporte de defecto.
+    </div>
+  </div>`;
+}
+
+function renderTemplateDetail(id) {
+  const tpl = TEMPLATES.find(t => t.id === id);
+  if (!tpl) return renderTemplatesView();
+
+  const formFieldsHTML = tpl.fields.map((f, i) => `
+    <div class="tpl-field" id="field-${i}">
+      <div class="tpl-field-header">
+        <label class="tpl-field-label">${f.label}</label>
+        <span class="tpl-field-tip" onclick="toggleTip(${i})">💡 Guía</span>
+      </div>
+      <div class="tpl-tip-text" id="tip-${i}" style="display:none">${f.tip}</div>
+      ${f.type === 'textarea'
+        ? `<textarea class="tpl-input tpl-textarea" placeholder="${f.placeholder}" rows="4"></textarea>`
+        : f.type === 'select'
+          ? `<select class="tpl-input tpl-select"><option value="" disabled selected>— Seleccionar —</option>${f.options.map(o => `<option>${o}</option>`).join('')}</select>`
+          : `<input class="tpl-input" type="text" placeholder="${f.placeholder}" />`
+      }
+    </div>`).join('');
+
+  const exampleRowsHTML = Object.entries(tpl.example.fields).map(([key, val]) => `
+    <div class="ex-row">
+      <div class="ex-key">${key}</div>
+      <div class="ex-val">${val.replace(/\n/g, '<br>')}</div>
+    </div>`).join('');
+
+  return `
+  <div class="template-detail-view">
+    <button class="back-btn" onclick="navigate('templates')">← Plantillas</button>
+
+    <div class="tpl-detail-header" style="border-left: 4px solid ${tpl.color}">
+      <span class="tpl-detail-icon">${tpl.icon}</span>
+      <div>
+        <h2>${tpl.title}</h2>
+        <p>${tpl.description}</p>
+        <div class="tpl-tags">${tpl.tags.map(tag => `<span class="tpl-tag">${tag}</span>`).join('')}</div>
+      </div>
+    </div>
+
+    <div class="tpl-layout">
+      <!-- Formulario en blanco -->
+      <div class="tpl-panel">
+        <div class="tpl-panel-header">
+          <span class="tpl-panel-title">📝 Plantilla en blanco</span>
+          <button class="tpl-clear-btn" onclick="clearTemplate()">Limpiar</button>
+        </div>
+        <div class="tpl-form" id="tplForm">${formFieldsHTML}</div>
+      </div>
+
+      <!-- Ejemplo completado -->
+      <div class="tpl-panel">
+        <div class="tpl-panel-header">
+          <span class="tpl-panel-title">✅ Ejemplo completado</span>
+          <button class="tpl-copy-btn" onclick="copyExample('${id}')">Copiar texto</button>
+        </div>
+        <div class="tpl-example-title">${tpl.example.title}</div>
+        <div class="tpl-example-rows">${exampleRowsHTML}</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function toggleTip(i) {
+  const el = document.getElementById(`tip-${i}`);
+  if (el) el.style.display = el.style.display === 'none' ? 'block' : 'none';
+}
+
+function clearTemplate() {
+  document.querySelectorAll('.tpl-input').forEach(el => {
+    if (el.tagName === 'SELECT') el.selectedIndex = 0;
+    else el.value = '';
+  });
+}
+
+function copyExample(id) {
+  const tpl = TEMPLATES.find(t => t.id === id);
+  if (!tpl) return;
+  const text = Object.entries(tpl.example.fields)
+    .map(([k, v]) => `${k}:\n${v}`)
+    .join('\n\n---\n\n');
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('.tpl-copy-btn');
+    if (btn) { btn.textContent = '✓ Copiado'; setTimeout(() => btn.textContent = 'Copiar texto', 2000); }
+  });
+}
+
 // ---- SIDEBAR HIGHLIGHT ----
 function setupSidebarNav() {
   document.querySelectorAll('.nav-link').forEach(link => {
@@ -783,6 +896,9 @@ window.restartFlashcards = restartFlashcards;
 window.filterFlashcards = filterFlashcards;
 window.filterGlossary = filterGlossary;
 window.toggleTheme = toggleTheme;
+window.toggleTip = toggleTip;
+window.clearTemplate = clearTemplate;
+window.copyExample = copyExample;
 
 // ---- INIT ----
 document.addEventListener('DOMContentLoaded', () => {
