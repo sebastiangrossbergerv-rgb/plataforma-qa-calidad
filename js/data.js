@@ -1652,3 +1652,1177 @@ const EXAM_QUESTIONS = [
     answer: 1, chapter: 1
   }
 ];
+
+// ============================================================
+// ENGLISH CONTENT — parallel arrays (same index = same item)
+// ============================================================
+
+const CH_EN = [
+  {
+    id: 1,
+    title: "Fundamentals of Testing",
+    description: "What testing is, why it is necessary, the 7 principles and the test process.",
+    sections: [
+      {
+        title: "What is Testing?",
+        content: `<p>Software testing is much more than simply running tests. It includes a wide range of activities and must be aligned with the software development lifecycle.</p>
+        <h4>Typical testing objectives:</h4>
+        <ul>
+          <li>Evaluate work products (requirements, user stories, designs and code)</li>
+          <li>Trigger failures and find defects</li>
+          <li>Ensure required coverage of the test object</li>
+          <li>Reduce the level of risk of insufficient software quality</li>
+          <li>Verify whether specified requirements have been fulfilled</li>
+          <li>Verify that the test object complies with contractual, legal and regulatory requirements</li>
+          <li>Provide information to stakeholders so they can make informed decisions</li>
+          <li>Build confidence in the quality of the test object</li>
+          <li>Validate whether the test object is complete and works as expected</li>
+        </ul>
+        <div class="info-box">
+          <strong>💡 Testing vs Debugging:</strong> Testing consists of <em>finding</em> failures. Debugging is the process of <em>finding, analysing and fixing</em> the causes of failures. Debugging is a developer activity; testing can be performed by a tester or a developer.
+        </div>`
+      },
+      {
+        title: "Why is Testing Necessary?",
+        content: `<p>Testing is a form of quality control that contributes to achieving the agreed objectives within the scope, time, quality and budget constraints established for the project.</p>
+        <h4>Error → Defect → Failure</h4>
+        <div class="concept-chain">
+          <div class="concept-item">
+            <span class="concept-icon">👤</span>
+            <strong>Error (Mistake)</strong>
+            <p>A human action that produces an incorrect result. Errors can occur due to time pressure, code complexity, misunderstanding of requirements, etc.</p>
+          </div>
+          <div class="concept-arrow">→</div>
+          <div class="concept-item">
+            <span class="concept-icon">🐛</span>
+            <strong>Defect (Bug)</strong>
+            <p>An imperfection or deficiency in a work product. A human error produces a defect in the code, design or document.</p>
+          </div>
+          <div class="concept-arrow">→</div>
+          <div class="concept-item">
+            <span class="concept-icon">💥</span>
+            <strong>Failure</strong>
+            <p>Runtime manifestation of a defect. Not all defects cause failures (unexecuted code, unreached condition).</p>
+          </div>
+        </div>
+        <h4>Root Cause vs Effect</h4>
+        <p>The <strong>root cause</strong> is the fundamental reason why an error occurred. Identifying the root cause allows organisations to implement process actions that reduce the frequency of future errors.</p>
+        <div class="example-box">
+          <strong>Example:</strong> A developer misinterprets a requirement (error) → writes incorrect code (defect) → the system calculates the price incorrectly (failure) → the customer loses money (effect). The root cause may be ambiguous requirements.
+        </div>`
+      },
+      {
+        title: "The 7 Principles of Testing",
+        content: `<p>These principles are the foundation of professional testing knowledge and have been agreed upon over the years in the testing industry.</p>
+        <div class="principles-grid">
+          <div class="principle-card">
+            <span class="principle-num">1</span>
+            <h4>Testing shows the presence of defects</h4>
+            <p>Testing can show that defects exist, but <strong>cannot prove there are no defects</strong>. Even if no defects are found, it does not mean the system is perfect.</p>
+          </div>
+          <div class="principle-card">
+            <span class="principle-num">2</span>
+            <h4>Exhaustive testing is impossible</h4>
+            <p>Testing all combinations of inputs, preconditions and paths is not feasible (except in trivial cases). Instead, risk analysis, testing techniques and priorities are used.</p>
+          </div>
+          <div class="principle-card">
+            <span class="principle-num">3</span>
+            <h4>Early testing saves time and money</h4>
+            <p>Finding and fixing defects earlier reduces costs. Testing activities should start as early as possible in the SDLC (<em>shift left</em>).</p>
+          </div>
+          <div class="principle-card">
+            <span class="principle-num">4</span>
+            <h4>Defect clustering</h4>
+            <p>A small number of modules typically contains most of the defects (80/20 rule). These "hot spots" help focus testing efforts and risk analysis.</p>
+          </div>
+          <div class="principle-card">
+            <span class="principle-num">5</span>
+            <h4>The pesticide paradox</h4>
+            <p>If the same test suites are executed repeatedly, they will eventually stop finding new defects. Tests must be reviewed and updated regularly.</p>
+          </div>
+          <div class="principle-card">
+            <span class="principle-num">6</span>
+            <h4>Testing is context dependent</h4>
+            <p>Testing is performed differently depending on context. For example, safety-critical aerospace software is tested differently from an e-commerce app.</p>
+          </div>
+          <div class="principle-card">
+            <span class="principle-num">7</span>
+            <h4>Absence-of-errors fallacy</h4>
+            <p>Finding and fixing defects is pointless if the system does not meet the needs and expectations of users. Verification is not the same as validation.</p>
+          </div>
+        </div>`
+      },
+      {
+        title: "The Test Process",
+        content: `<p>The test process is not a rigid sequence but a set of activities that may overlap or be executed iteratively.</p>
+        <div class="process-flow">
+          <div class="process-step">
+            <div class="step-header">📋 Planning</div>
+            <p>Defines testing objectives, strategy, resources and schedule. Produces the <strong>Test Plan</strong>.</p>
+          </div>
+          <div class="process-step">
+            <div class="step-header">🔍 Monitoring and Control</div>
+            <p>Tracks actual progress against the plan. Takes corrective actions if necessary. Produces <strong>progress reports</strong>.</p>
+          </div>
+          <div class="process-step">
+            <div class="step-header">🧩 Analysis</div>
+            <p>Examines the test basis and defines <strong>test conditions</strong>. Answers "what to test?"</p>
+          </div>
+          <div class="process-step">
+            <div class="step-header">✏️ Design</div>
+            <p>Elaborates <strong>test cases</strong> and test data. Answers "how to test?"</p>
+          </div>
+          <div class="process-step">
+            <div class="step-header">⚙️ Implementation</div>
+            <p>Organises test cases into <strong>test procedures</strong> and test suites. Prepares the environment.</p>
+          </div>
+          <div class="process-step">
+            <div class="step-header">▶️ Execution</div>
+            <p>Executes tests, records results, compares actual vs expected results, reports defects.</p>
+          </div>
+          <div class="process-step">
+            <div class="step-header">✅ Completion</div>
+            <p>Verifies exit criteria, archives work products, produces the <strong>test completion report</strong>.</p>
+          </div>
+        </div>
+        <h4>Testing Psychology</h4>
+        <p>The tester's mindset differs from the developer's. The tester actively looks for defects with a critical perspective. Tester independence (from the code author) increases effectiveness in finding defects, but requires good communication to avoid conflicts.</p>`
+      }
+    ],
+    quiz: [
+      {
+        question: "A developer makes an error when interpreting a requirement and writes incorrect code that produces an unexpected result in production. What is the correct ISTQB sequence of terms?",
+        options: ["Failure → Defect → Error", "Error → Failure → Defect", "Error → Defect → Failure", "Defect → Error → Failure"],
+        explanation: "According to ISTQB: an Error (human action) produces a Defect (in the code/work product), which when executed causes a Failure (unexpected behaviour in the system)."
+      },
+      {
+        question: "Which of the following is NOT a typical testing objective according to ISTQB?",
+        options: ["Finding defects", "Providing confidence in quality", "Guaranteeing the software has no defects", "Verifying compliance with requirements"],
+        explanation: "Testing can demonstrate the presence of defects, but can NEVER guarantee their absence. This is ISTQB Principle 1: 'Testing shows the presence of defects, not their absence'."
+      },
+      {
+        question: "According to the 'pesticide paradox' principle, what should a test team do when their tests stop finding new defects?",
+        options: ["Conclude that the software has no more defects", "Review and update test cases regularly", "Only increase the number of test executions", "Automate all existing tests"],
+        explanation: "Principle 5 (pesticide paradox) states that the same test suites executed repeatedly will eventually stop finding new defects. Test cases must be reviewed and updated periodically."
+      },
+      {
+        question: "What is the main difference between testing and debugging?",
+        options: ["Testing is done by developers; debugging by testers", "Testing finds failures; debugging finds, analyses and fixes their causes", "Testing is more expensive than debugging", "There is no difference; they are the same process"],
+        explanation: "Testing aims to trigger failures and detect defects. Debugging is a development activity that locates, analyses and corrects the cause of failures found during testing."
+      },
+      {
+        question: "Which testing principle justifies using risk analysis to prioritise testing efforts?",
+        options: ["Defect clustering", "Exhaustive testing is impossible", "The pesticide paradox", "Absence-of-errors fallacy"],
+        explanation: "Principle 2 states that exhaustive testing is impossible. To manage this, risk analysis, testing techniques and priorities are used to focus effort where it adds the most value."
+      },
+      {
+        question: "A tax calculation module contains 75% of all system defects, yet represents only 20% of the code. Which ISTQB principle describes this phenomenon?",
+        options: ["The pesticide paradox", "Exhaustive testing is impossible", "Defect clustering", "Testing is context dependent"],
+        explanation: "Principle 4 (defect clustering) states that a small number of modules typically contains most detected defects. This guides teams to focus testing effort on those higher-risk areas."
+      },
+      {
+        question: "A banking system passes all its functional tests successfully, but users find the interface too complex to use. Which ISTQB principle applies here?",
+        options: ["The pesticide paradox", "Early testing saves time and money", "Absence-of-errors fallacy", "Defect clustering"],
+        explanation: "Principle 7 (absence-of-errors fallacy) indicates that finding and fixing defects does not guarantee success if the system does not satisfy users' real needs. The software can be technically correct but useless."
+      },
+      {
+        question: "In which test process activity are test cases elaborated and test data determined?",
+        options: ["Test planning", "Test analysis", "Test design", "Test implementation"],
+        explanation: "In Test Design, test cases are elaborated from the test conditions identified during Analysis. Test data is also designed. Analysis defines WHAT to test; Design defines HOW to test it."
+      }
+    ]
+  },
+  {
+    id: 2,
+    title: "Testing Throughout the SDLC",
+    description: "Lifecycle models, test levels and types, regression testing and agile approaches.",
+    sections: [
+      {
+        title: "Software Development Lifecycle Models",
+        content: `<p>The software development lifecycle (SDLC) model determines how and when testing is performed. There is no single correct model; the choice depends on the project context.</p>
+        <h4>Good testing practices for any SDLC:</h4>
+        <ul>
+          <li>Every development activity has a corresponding testing activity</li>
+          <li>Different test levels have specific and distinct objectives</li>
+          <li>Test analysis and design begin during the corresponding development activity</li>
+          <li>Testers participate in reviews of development work products</li>
+        </ul>
+        <div class="comparison-grid">
+          <div class="comparison-card">
+            <h4>🌊 Waterfall Model</h4>
+            <p>Test phases occur after development. Testing happens at the end, which can lead to costly late fixes. Useful for projects with very stable requirements.</p>
+          </div>
+          <div class="comparison-card">
+            <h4>🔻 V-Model</h4>
+            <p>Each development phase has a corresponding test level. Tests are planned and designed in parallel with development. Facilitates <em>shift-left</em>.</p>
+          </div>
+          <div class="comparison-card">
+            <h4>🔁 Iterative / Agile Models</h4>
+            <p>Development and testing occur in short cycles (iterations or sprints). Allow rapid feedback. Automated regression tests are essential.</p>
+          </div>
+        </div>`
+      },
+      {
+        title: "Test Levels",
+        content: `<p>Test levels are groups of testing activities that are organised and managed together. Each level has different objectives, test basis, test object, environment and typical personnel.</p>
+        <div class="levels-table">
+          <div class="level-row header-row">
+            <span>Level</span><span>Test Object</span><span>Who Tests</span><span>Main Objective</span>
+          </div>
+          <div class="level-row">
+            <span><strong>Component (Unit)</strong></span>
+            <span>Individual modules, classes, functions</span>
+            <span>Developers</span>
+            <span>Verify behaviour of each component in isolation</span>
+          </div>
+          <div class="level-row">
+            <span><strong>Component Integration</strong></span>
+            <span>Interfaces between components</span>
+            <span>Developers</span>
+            <span>Verify communication and interaction between components</span>
+          </div>
+          <div class="level-row">
+            <span><strong>System</strong></span>
+            <span>The fully integrated system</span>
+            <span>Independent test team</span>
+            <span>Verify functional and non-functional behaviour of the complete system</span>
+          </div>
+          <div class="level-row">
+            <span><strong>System Integration</strong></span>
+            <span>Interfaces between systems</span>
+            <span>Test team</span>
+            <span>Verify communication between systems and external infrastructure</span>
+          </div>
+          <div class="level-row">
+            <span><strong>Acceptance (UAT)</strong></span>
+            <span>Complete system in real environment</span>
+            <span>Customers, end users</span>
+            <span>Validate that the system satisfies business needs</span>
+          </div>
+        </div>
+        <div class="info-box">
+          <strong>Acceptance Testing Types:</strong> User acceptance testing (UAT), Operational acceptance testing (installation, backup, recovery), Contractual and regulatory acceptance testing, Alpha testing (at the developer's site with real users), Beta testing (at the customer's site).
+        </div>`
+      },
+      {
+        title: "Test Types",
+        content: `<p>Test types classify testing activities according to <strong>which quality attribute</strong> is being evaluated.</p>
+        <h4>Functional Testing</h4>
+        <p>Evaluates the functions that the system should perform. Test conditions are derived from functional requirements, user stories, use cases, etc. Can be applied at all levels.</p>
+        <h4>Non-Functional Testing</h4>
+        <p>Evaluates characteristics other than functionality:</p>
+        <ul>
+          <li><strong>Performance efficiency:</strong> response time, resource usage</li>
+          <li><strong>Compatibility:</strong> with other systems, platforms or browsers</li>
+          <li><strong>Usability:</strong> ease of learning and use</li>
+          <li><strong>Reliability:</strong> availability, fault tolerance</li>
+          <li><strong>Security:</strong> confidentiality, integrity, authentication</li>
+          <li><strong>Maintainability:</strong> ease of modification</li>
+          <li><strong>Portability:</strong> ease of migration between environments</li>
+        </ul>
+        <h4>White-Box vs Black-Box Testing</h4>
+        <div class="comparison-grid">
+          <div class="comparison-card">
+            <h4>⬛ Black-Box</h4>
+            <p>Specification-based. Does not require knowledge of the internal structure. Derived from functional or non-functional requirements. Applies at all levels.</p>
+          </div>
+          <div class="comparison-card">
+            <h4>⬜ White-Box</h4>
+            <p>Based on the internal structure of the system. Requires knowledge of the code or architecture. Used to measure code coverage.</p>
+          </div>
+        </div>
+        <h4>Regression and Confirmation Testing</h4>
+        <p><strong>Confirmation testing</strong> verifies that a fixed defect no longer occurs. <strong>Regression testing</strong> verifies that changes have not introduced new defects in unmodified parts. Regression tests are good candidates for automation.</p>`
+      },
+      {
+        title: "Testing in Agile Development",
+        content: `<p>In agile approaches, testing is continuous and forms an integral part of each sprint. Some key concepts:</p>
+        <h4>Agile Testing Quadrants (Brian Marick)</h4>
+        <div class="quadrant-grid">
+          <div class="quadrant-card q1">
+            <strong>Q1 - Team Support / Technology</strong>
+            <p>Automated component and integration tests. TDD.</p>
+          </div>
+          <div class="quadrant-card q2">
+            <strong>Q2 - Team Support / Business</strong>
+            <p>Functional tests, examples, user story tests.</p>
+          </div>
+          <div class="quadrant-card q3">
+            <strong>Q3 - Product Critique / Business</strong>
+            <p>Exploratory, usability and user acceptance testing.</p>
+          </div>
+          <div class="quadrant-card q4">
+            <strong>Q4 - Product Critique / Technology</strong>
+            <p>Performance, security, reliability and robustness testing.</p>
+          </div>
+        </div>
+        <h4>TDD, ATDD and BDD</h4>
+        <ul>
+          <li><strong>TDD (Test Driven Development):</strong> The developer writes a failing test first, then the minimum code to pass it, then refactors.</li>
+          <li><strong>ATDD (Acceptance Test Driven Development):</strong> Acceptance criteria are defined before development, with customer participation.</li>
+          <li><strong>BDD (Behavior Driven Development):</strong> Behaviours are described in natural language (Given/When/Then) that serve as executable tests.</li>
+        </ul>`
+      }
+    ],
+    quiz: [
+      {
+        question: "Which test level has an independent test team verify the functional and non-functional behaviour of the complete system?",
+        options: ["Component testing", "Component integration testing", "System testing", "Acceptance testing"],
+        explanation: "System testing focuses on the behaviour and capabilities of the whole system, including end-to-end tasks and non-functional characteristics. It is usually performed by an independent test team."
+      },
+      {
+        question: "A company releases a beta version of its mobile app to a selected group of users on their own devices. What type of acceptance testing is this?",
+        options: ["Alpha testing", "User acceptance testing (UAT)", "Beta testing", "Operational acceptance testing"],
+        explanation: "Beta testing is performed at the customer or end-user site, with real users using the product in their natural environment, without direct supervision from the development team."
+      },
+      {
+        question: "What is the difference between confirmation testing and regression testing?",
+        options: [
+          "Confirmation verifies fixed defects no longer occur; regression verifies changes have not introduced new defects",
+          "Confirmation is done before each sprint; regression at the end of the project",
+          "Confirmation is done by the developer; regression by the customer",
+          "There is no difference; they are synonyms"
+        ],
+        explanation: "Confirmation testing (re-testing) verifies that a specific defect has been fixed. Regression testing verifies that changes (fixes, improvements) have not caused new defects in unmodified parts of the system."
+      },
+      {
+        question: "In the agile testing quadrants, which quadrant contains performance and security testing?",
+        options: ["Q1 - Team Support / Technology", "Q2 - Team Support / Business", "Q3 - Product Critique / Business", "Q4 - Product Critique / Technology"],
+        explanation: "Quadrant Q4 contains tests that critique the product from a technological perspective: performance, security, reliability and robustness testing. They are technical tests aimed at finding system weaknesses."
+      },
+      {
+        question: "What characteristic distinguishes white-box testing from black-box testing?",
+        options: [
+          "White-box testing requires knowledge of the internal structure of the system",
+          "White-box testing is only performed at system level",
+          "Black-box testing is more effective at finding defects",
+          "White-box testing cannot be automated"
+        ],
+        explanation: "White-box testing is based on the internal structure of the system and requires knowledge of the code or architecture. Black-box testing is based on functional specifications, with no need to know the implementation."
+      },
+      {
+        question: "An organisation is developing safety-critical medical software. Which lifecycle model is most appropriate?",
+        options: ["Scrum with 2-week sprints", "Continuous Kanban without iterations", "V-Model with rigorous documentation", "Any model; the model does not affect quality"],
+        explanation: "The V-Model is appropriate for projects where requirements are stable and rigorous documentation is needed (medical, aerospace systems, etc.). It ensures every development phase has a corresponding test level planned from the start."
+      }
+    ]
+  },
+  {
+    id: 3,
+    title: "Static Testing",
+    description: "Reviews, static analysis and how to find defects without executing code.",
+    sections: [
+      {
+        title: "What is Static Testing?",
+        content: `<p>Static testing examines work products <strong>without executing the code</strong>. It can be applied to documents, requirements, designs, code, test plans, etc.</p>
+        <h4>Benefits of static testing:</h4>
+        <ul>
+          <li>Detect defects before execution (lower cost to fix)</li>
+          <li>Evaluate quality and build confidence in work products</li>
+          <li>Provide information to stakeholders</li>
+          <li>Improve communication between developers and testers</li>
+        </ul>
+        <h4>Difference between static and dynamic testing:</h4>
+        <div class="comparison-grid">
+          <div class="comparison-card">
+            <h4>🔍 Static Testing</h4>
+            <p>Does not execute the code. Examines documents, requirements, source code. Can detect defects that dynamic testing cannot find (requirement inconsistencies, ambiguities, standards violations).</p>
+          </div>
+          <div class="comparison-card">
+            <h4>▶️ Dynamic Testing</h4>
+            <p>Executes the code with input data. Observes behaviour and compares with expected results. Can only detect defects that cause a visible failure.</p>
+          </div>
+        </div>
+        <div class="info-box">
+          <strong>Typical defects found by reviews:</strong> Deviations from standards, requirement ambiguities, omissions, inconsistencies, redundant or incorrect information.
+        </div>`
+      },
+      {
+        title: "Review Types",
+        content: `<p>Reviews are the most common type of static testing. There are four main types, from least to most formal:</p>
+        <div class="review-types">
+          <div class="review-card informal">
+            <h4>1. Informal Review</h4>
+            <ul>
+              <li>No formal documented process</li>
+              <li>May be a peer review (buddy check) or pair review</li>
+              <li>Main objective: detect potential defects</li>
+              <li>Does not require a review meeting</li>
+              <li>Widely used in Agile</li>
+            </ul>
+          </div>
+          <div class="review-card walkthrough">
+            <h4>2. Walkthrough</h4>
+            <ul>
+              <li>Led by the product author</li>
+              <li>May have a formal or informal process</li>
+              <li>Objectives: detect defects, evaluate alternatives, achieve consensus</li>
+              <li>A scribe documents findings</li>
+              <li>May include a review meeting</li>
+            </ul>
+          </div>
+          <div class="review-card technical">
+            <h4>3. Technical Review</h4>
+            <ul>
+              <li>Performed by qualified technical reviewers</li>
+              <li>Moderated by a moderator (may be the author)</li>
+              <li>Objectives: detect defects, evaluate technical conformance</li>
+              <li>Checklists may be used</li>
+              <li>May range from informal to very formal</li>
+            </ul>
+          </div>
+          <div class="review-card inspection">
+            <h4>4. Inspection</h4>
+            <ul>
+              <li>Most formal type of review</li>
+              <li>Moderated by a trained and certified moderator</li>
+              <li>Defined roles: moderator, author, reviewers, scribe, leader</li>
+              <li>Based on rules, checklists and entry/exit criteria</li>
+              <li>Metrics collected for process improvement</li>
+            </ul>
+          </div>
+        </div>
+        <h4>Formal Review Process</h4>
+        <p>Consists of: <strong>Planning → Review Initiation → Individual Review → Communication and Analysis → Fixing and Reporting</strong>. Entry criteria are applied at initiation; exit criteria are verified at fixing and reporting.</p>`
+      },
+      {
+        title: "Static Analysis",
+        content: `<p>Static analysis examines source code or UML models using automated tools, without executing the software. Compilers perform a basic form of static analysis.</p>
+        <h4>Typical defects detected by static analysis:</h4>
+        <ul>
+          <li>Undeclared variables or variables used without initialisation</li>
+          <li>Variables never used (dead code)</li>
+          <li>Unreachable code</li>
+          <li>Coding convention violations</li>
+          <li>Security vulnerabilities (SQL injection, XSS, buffer overflow)</li>
+          <li>Incorrect program logic</li>
+          <li>High cyclomatic complexity</li>
+        </ul>
+        <div class="info-box">
+          <strong>Static analysis tools:</strong> SonarQube, ESLint, PMD, Checkstyle, FindBugs/SpotBugs, Pylint. These tools identify potential defects without executing the code.
+        </div>`
+      }
+    ],
+    quiz: [
+      {
+        question: "Which type of defect is most likely to be detected by a static review but NOT by dynamic testing?",
+        options: [
+          "A bug in compound interest calculation",
+          "An ambiguity in requirements causing two valid interpretations",
+          "An error in the HTTP server response",
+          "A page load time above the threshold"
+        ],
+        explanation: "Static reviews can detect requirement ambiguities, document inconsistencies and design problems before code is written. Dynamic testing can only detect defects that cause a failure during execution."
+      },
+      {
+        question: "Which review type is the most formal, has defined roles and collects metrics for process improvement?",
+        options: ["Informal review (buddy check)", "Walkthrough", "Technical review", "Inspection"],
+        explanation: "Inspection is the most formal type of review. It includes specific roles (certified moderator, author, reviewers, scribe), is based on rules and checklists, has entry/exit criteria, and collects metrics for process improvement."
+      },
+      {
+        question: "In a walkthrough, who leads the review session?",
+        options: ["An independent moderator", "The author of the work product", "The test manager", "A senior technical reviewer"],
+        explanation: "In a walkthrough, the author leads the session. The author presents their own work to the reviewers and explains the decisions made. This helps the author get direct feedback and helps reviewers understand the context."
+      },
+      {
+        question: "Which of the following is NOT a static testing activity?",
+        options: [
+          "Reviewing a requirements specification for ambiguities",
+          "Using a tool to detect uninitialised variables in code",
+          "Executing test cases to verify login functionality",
+          "Inspecting an architecture design"
+        ],
+        explanation: "Executing test cases is dynamic testing, not static. Static testing examines work products without executing the software: document reviews, static code analysis, design inspections, etc."
+      },
+      {
+        question: "A development team uses a tool that analyses their Python code for unused variables, style violations and potential vulnerabilities without running the program. This is an example of:",
+        options: ["White-box testing", "Static analysis", "Integration testing", "Walkthrough"],
+        explanation: "Static analysis examines source code using automated tools without executing it. Tools such as Pylint, ESLint or SonarQube perform static analysis to detect potential defects, standards violations and vulnerabilities."
+      }
+    ]
+  },
+  {
+    id: 4,
+    title: "Test Design Techniques",
+    description: "Equivalence partitioning, boundary values, decision tables, state transitions and more.",
+    sections: [
+      {
+        title: "Equivalence Partitioning",
+        content: `<p>Equivalence partitioning (EP) divides input data into partitions where all values in the same group behave the same way. If one value in a partition fails, all will fail.</p>
+        <h4>Types of partitions:</h4>
+        <ul>
+          <li><strong>Valid:</strong> values the system should accept and process correctly</li>
+          <li><strong>Invalid:</strong> values the system should reject</li>
+        </ul>
+        <div class="example-box">
+          <strong>Example — "age" field (18 to 65 years):</strong>
+          <div class="pe-example">
+            <div class="pe-invalid">Invalid: &lt;18<br><em>e.g. 10, 0, -5</em></div>
+            <div class="pe-valid">Valid: 18-65<br><em>e.g. 30, 45, 18</em></div>
+            <div class="pe-invalid">Invalid: &gt;65<br><em>e.g. 70, 100</em></div>
+          </div>
+          <p>With EP, at least 1 test case per partition = minimum 3 test cases.</p>
+        </div>
+        <div class="info-box">
+          <strong>EP Coverage:</strong> 100% is achieved when at least one value from each identified partition has been tested. The minimum recommended coverage is to test once for each valid and invalid partition.
+        </div>`
+      },
+      {
+        title: "Boundary Value Analysis",
+        content: `<p>Boundary Value Analysis (BVA) complements EP by focusing on partition edges, where defects are most likely to occur.</p>
+        <h4>2-value version (ISTQB 2018):</h4>
+        <p>For each boundary, test the <strong>exact boundary value</strong> and the <strong>adjacent value in the invalid partition</strong>.</p>
+        <h4>3-value version:</h4>
+        <p>For each boundary, test the <strong>boundary value</strong>, the <strong>value just below</strong> and the <strong>value just above</strong>.</p>
+        <div class="example-box">
+          <strong>Example — "age" field (18 to 65):</strong>
+          <div class="bva-example">
+            <div class="bva-invalid">17 ❌</div>
+            <div class="bva-valid">18 ✓</div>
+            <div class="bva-mid">...</div>
+            <div class="bva-valid">65 ✓</div>
+            <div class="bva-invalid">66 ❌</div>
+          </div>
+          <p>With 2-value BVA: test 17, 18, 65, 66 (4 test cases for boundaries).</p>
+          <p>With 3-value BVA: test 17, 18, 19, 64, 65, 66 (6 test cases).</p>
+        </div>`
+      },
+      {
+        title: "Decision Tables",
+        content: `<p>Decision tables model combinations of input conditions and resulting actions. They are ideal when system behaviour depends on multiple interdependent conditions.</p>
+        <h4>Decision table structure:</h4>
+        <div class="dt-example">
+          <table class="decision-table">
+            <thead>
+              <tr><th></th><th>R1</th><th>R2</th><th>R3</th><th>R4</th></tr>
+            </thead>
+            <tbody>
+              <tr class="conditions-header"><td colspan="5"><strong>CONDITIONS</strong></td></tr>
+              <tr><td>Has account?</td><td>Y</td><td>Y</td><td>N</td><td>N</td></tr>
+              <tr><td>Correct password?</td><td>Y</td><td>N</td><td>Y</td><td>N</td></tr>
+              <tr class="actions-header"><td colspan="5"><strong>ACTIONS</strong></td></tr>
+              <tr><td>Allow access</td><td>✓</td><td>✗</td><td>✗</td><td>✗</td></tr>
+              <tr><td>Show error</td><td>✗</td><td>✓</td><td>✓</td><td>✓</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>With <strong>N binary conditions</strong>, there are a maximum of <strong>2^N combinations</strong> (rules). A collapsed table can be used to reduce the number of columns.</p>
+        <div class="info-box">
+          <strong>Minimum coverage:</strong> At least one test case per rule (column) in the table. With N binary conditions: 2^N rules = 2^N minimum test cases before collapsing.
+        </div>`
+      },
+      {
+        title: "State Transition Testing",
+        content: `<p>State transition testing models system behaviour based on its current state and the events it receives. It is represented using state diagrams or transition tables.</p>
+        <h4>Components:</h4>
+        <ul>
+          <li><strong>State:</strong> a stable situation of the system at a given moment</li>
+          <li><strong>Transition:</strong> a change from one state to another</li>
+          <li><strong>Event:</strong> what triggers the transition</li>
+          <li><strong>Action:</strong> what happens as a result of the transition</li>
+          <li><strong>Final/acceptance state:</strong> the system can end in this state</li>
+        </ul>
+        <div class="example-box">
+          <strong>Example — ATM machine:</strong><br>
+          IDLE → (insert card) → CARD_INSERTED → (enter PIN) → AUTHENTICATED → (withdraw money) → IDLE
+        </div>
+        <h4>Coverage levels:</h4>
+        <ul>
+          <li><strong>All states coverage:</strong> visit each state at least once</li>
+          <li><strong>All valid transitions coverage:</strong> exercise each valid transition at least once (100% transitions)</li>
+          <li><strong>All transitions coverage (including invalid):</strong> also test transitions that should not occur</li>
+        </ul>`
+      },
+      {
+        title: "White-Box and Experience-Based Techniques",
+        content: `<h4>Statement Testing (Statement Coverage)</h4>
+        <p>Measures the percentage of statements executed during testing. 100% coverage means every statement in the code has been executed at least once.</p>
+        <h4>Decision Testing (Decision Coverage)</h4>
+        <p>Measures the percentage of decision outcomes (true/false) that have been evaluated. 100% decision coverage implies 100% statement coverage, but not vice versa.</p>
+        <div class="info-box">
+          <strong>Relationship:</strong> 100% decision coverage ⊇ 100% statement coverage. Decision coverage is more demanding.
+        </div>
+        <h4>Experience-Based Techniques</h4>
+        <ul>
+          <li><strong>Error Guessing:</strong> The tester uses experience and system knowledge to intuit where defects are likely. Can be formalised with "defect checklists".</li>
+          <li><strong>Exploratory Testing:</strong> Simultaneous design and execution, guided by real-time learning. Documented using "test charters". Effective when there is little time or documentation.</li>
+          <li><strong>Checklist-Based Testing:</strong> The tester designs, implements and executes tests to cover checklist items. Ensures consistency between sessions.</li>
+        </ul>`
+      }
+    ],
+    quiz: [
+      {
+        question: "A field accepts ages between 18 and 99. Using equivalence partitioning, how many partitions are identified?",
+        options: ["1 (one valid partition)", "2 (one valid, one invalid)", "3 (one valid, two invalid)", "4 (two valid, two invalid)"],
+        explanation: "EP identifies 3 partitions: invalid (<18), valid (18–99), invalid (>99). Each partition represents a group of values that behave the same way, requiring at least one test case per partition."
+      },
+      {
+        question: "When is a decision table the most suitable technique?",
+        options: [
+          "When you need to test boundary values of a numeric field",
+          "When system behaviour depends on multiple interdependent conditions",
+          "When you want to measure source code coverage",
+          "When there is no system documentation"
+        ],
+        explanation: "Decision tables are especially useful when system behaviour depends on multiple conditions that can combine in various ways. They clearly model all possible combinations of conditions and their resulting actions."
+      },
+      {
+        question: "In state transition testing, what is the most demanding coverage level?",
+        options: [
+          "All states coverage",
+          "All valid transitions coverage",
+          "All transitions coverage including invalid transitions",
+          "Initial and final state coverage"
+        ],
+        explanation: "Testing all transitions including invalid ones (transitions that should not occur) is the most demanding level. It verifies that the system not only correctly handles valid transitions but also appropriately rejects unexpected events in each state."
+      },
+      {
+        question: "A tester with 10 years of experience in banking systems designs additional test cases based on their intuition about where defects typically occur. This is an example of:",
+        options: ["Equivalence partitioning", "Exploratory testing", "Error guessing", "Checklist-based testing"],
+        explanation: "Error guessing is an experience-based technique where the tester uses their knowledge of the system and defect history to anticipate where defects are most likely to exist. It is formalised through 'defect checklists'."
+      },
+      {
+        question: "What is the relationship between decision coverage and statement coverage?",
+        options: [
+          "They are equivalent; 100% of one implies 100% of the other",
+          "100% statement coverage implies 100% decision coverage",
+          "100% decision coverage implies 100% statement coverage",
+          "They have no relationship"
+        ],
+        explanation: "Decision coverage is more demanding than statement coverage. Achieving 100% decision coverage (all true/false outcomes of every decision) automatically achieves 100% statement coverage, but not the other way around."
+      }
+    ]
+  },
+  {
+    id: 5,
+    title: "Test Management",
+    description: "Organisation, planning, metrics, risks and defect management.",
+    sections: [
+      {
+        title: "Test Organisation",
+        content: `<h4>Independent Testing</h4>
+        <p>The degree of tester independence from the development team affects effectiveness in finding defects:</p>
+        <div class="independence-scale">
+          <div class="ind-level low">No independence: developer tests their own code</div>
+          <div class="ind-level med-low">Low independence: another developer from the same team tests</div>
+          <div class="ind-level med">Medium independence: test team within the same project</div>
+          <div class="ind-level med-high">High independence: separate test team in the organisation</div>
+          <div class="ind-level high">Maximum independence: external testers (outsourcing)</div>
+        </div>
+        <h4>Roles in Test Management</h4>
+        <p><strong>Test Manager:</strong> Plan testing, monitor progress, manage risks, report to management, coordinate with the project team.</p>
+        <p><strong>Tester:</strong> Analyse and design test cases, implement and execute tests, evaluate results, report defects, use test tools, review tests of others.</p>`
+      },
+      {
+        title: "Test Planning and Estimation",
+        content: `<h4>Test Plan</h4>
+        <p>The test plan documents the objectives, scope, approach, resources and schedule of testing activities. It includes:</p>
+        <ul>
+          <li>Project context and system under test</li>
+          <li>Assumptions and constraints</li>
+          <li>Stakeholders (who participates in testing)</li>
+          <li>Project and product risks</li>
+          <li>Testing approach (levels, types, techniques)</li>
+          <li>Test environment</li>
+          <li>Entry and exit criteria</li>
+          <li>Schedules and estimates</li>
+          <li>Metrics and reports</li>
+        </ul>
+        <h4>Entry and Exit Criteria</h4>
+        <div class="criteria-grid">
+          <div class="criteria-card">
+            <h4>Entry Criteria (Definition of Ready)</h4>
+            <p>Conditions that must be met to start a testing activity:</p>
+            <ul>
+              <li>Availability of test environment</li>
+              <li>Code available and delivered</li>
+              <li>Test data available</li>
+              <li>Test tools installed and configured</li>
+            </ul>
+          </div>
+          <div class="criteria-card">
+            <h4>Exit Criteria (Definition of Done)</h4>
+            <p>Conditions that must be met to conclude testing:</p>
+            <ul>
+              <li>Coverage level achieved</li>
+              <li>Number of open defects within threshold</li>
+              <li>All planned tests executed</li>
+              <li>Residual risks accepted by stakeholders</li>
+            </ul>
+          </div>
+        </div>
+        <h4>Estimation Techniques</h4>
+        <ul>
+          <li><strong>Metrics-based:</strong> Uses data from similar past projects</li>
+          <li><strong>Expert-based:</strong> Expert judgement, Planning Poker, Delphi technique</li>
+        </ul>`
+      },
+      {
+        title: "Test Metrics and Control",
+        content: `<p>Test metrics enable evaluation of the progress and quality of the test process.</p>
+        <h4>Common metrics:</h4>
+        <div class="metrics-grid">
+          <div class="metric-card"><strong>% work completed</strong><p>Test cases designed, executed, with result</p></div>
+          <div class="metric-card"><strong>Code coverage</strong><p>% statements or decisions exercised</p></div>
+          <div class="metric-card"><strong>Defects found/fixed</strong><p>Detection and resolution rate</p></div>
+          <div class="metric-card"><strong>Defect density</strong><p>Defects per module or per line of code</p></div>
+          <div class="metric-card"><strong>Product confidence</strong><p>Number of tests passed vs failed</p></div>
+          <div class="metric-card"><strong>Requirements coverage</strong><p>% requirements with at least one test case</p></div>
+        </div>
+        <h4>Test Reports</h4>
+        <p>Progress reports are generated during testing (for the team). Completion reports are generated at the end of a test level or cycle (for management and stakeholders).</p>`
+      },
+      {
+        title: "Risk Management and Defect Management",
+        content: `<h4>Risks in Testing</h4>
+        <p><strong>Product risk:</strong> Possibility that the system fails. Examples: complex software, legacy code, lack of team experience.</p>
+        <p><strong>Project risk:</strong> Factors that affect project success. Examples: staff turnover, requirement changes, schedule pressure.</p>
+        <div class="info-box">
+          <strong>Risk-based testing:</strong> Concentrate testing effort in the highest-risk areas. Risk = probability × impact. Higher-risk areas receive more testing.
+        </div>
+        <h4>Defect Management</h4>
+        <p>A good defect report must contain:</p>
+        <ul>
+          <li>Unique identifier</li>
+          <li>Title / summary</li>
+          <li>Date of report and author</li>
+          <li>Test object and environment</li>
+          <li>Steps to reproduce the defect</li>
+          <li>Expected result vs actual result</li>
+          <li>Severity and priority</li>
+          <li>Defect status</li>
+          <li>Evidence (screenshots, logs)</li>
+        </ul>
+        <h4>Severity vs Priority</h4>
+        <div class="comparison-grid">
+          <div class="comparison-card">
+            <h4>🔴 Severity</h4>
+            <p>Technical impact of the defect on the system. Assigned by the test team. Scale: Critical, High, Medium, Low.</p>
+          </div>
+          <div class="comparison-card">
+            <h4>🚨 Priority</h4>
+            <p>Urgency with which it must be fixed. Assigned by the product owner or business. A cosmetic defect can have high priority if it affects the brand.</p>
+          </div>
+        </div>`
+      }
+    ],
+    quiz: [
+      {
+        question: "What is the main advantage of having a test team independent from the development team?",
+        options: ["Independent testers are always faster", "Greater ability to find defects by having a different perspective from the author", "They eliminate the need for developers to perform unit tests", "They reduce the overall project cost"],
+        explanation: "An independent test team brings a different perspective from the author, which increases effectiveness in finding defects. This independence reduces the author's bias, which can prevent them from seeing flaws in their own work."
+      },
+      {
+        question: "Which of the following is a Test Manager's responsibility?",
+        options: ["Designing individual test cases", "Executing test cases and recording results", "Planning testing and managing test process risks", "Developing test automation scripts"],
+        explanation: "The Test Manager is responsible for planning tests, monitoring progress, managing risks in the test process, reporting to management and coordinating with the project team. Designing and executing test cases is the Tester's responsibility."
+      },
+      {
+        question: "A cosmetic defect (spelling error on the home page) receives High Priority because the CEO will present a demo tomorrow. Its Severity is Low. Does this contradict ISTQB principles?",
+        options: ["Yes; priority must always correspond to severity", "No; severity and priority are independent dimensions assigned by different roles", "Yes; cosmetic defects should not have high priority", "No; priority is assigned by the test manager based on technical severity"],
+        explanation: "Severity and priority are independent dimensions. Severity (technical impact) is assigned by the test team; priority (business urgency) is assigned by the product owner or client. A low-severity defect can have high priority for business reasons."
+      },
+      {
+        question: "Which metric best indicates the effectiveness of the test process?",
+        options: ["Total number of test cases designed", "Percentage of defects found in testing vs found in production", "Speed of test execution in minutes", "Number of testers on the team"],
+        explanation: "The percentage of defects found in testing vs production (defect detection effectiveness) directly measures how well testing catches defects before they reach the customer, which is the primary purpose of testing."
+      },
+      {
+        question: "Risk-based testing means that system areas with the highest product risk receive:",
+        options: ["Fewer tests to save resources", "More attention and testing effort", "Only automated tests", "Only functional tests"],
+        explanation: "Risk-based testing prioritises testing activities based on risk level (probability × impact). Areas with the highest product risk (most likely to fail with the greatest impact) receive more testing effort."
+      }
+    ]
+  },
+  {
+    id: 6,
+    title: "Tool Support for Testing",
+    description: "Classification of test tools, automation and success factors.",
+    sections: [
+      {
+        title: "Classification of Test Tools",
+        content: `<p>Test tools can be classified according to their purpose within the test process:</p>
+        <div class="tools-grid">
+          <div class="tool-category">
+            <h4>🗂️ Test Management</h4>
+            <p>TestRail, Zephyr, qTest. Manage test cases, executions, plans and traceability with requirements.</p>
+          </div>
+          <div class="tool-category">
+            <h4>🐛 Defect Management</h4>
+            <p>Jira, Bugzilla, Azure DevOps. Track the defect lifecycle from opening to closure.</p>
+          </div>
+          <div class="tool-category">
+            <h4>⚙️ Test Automation</h4>
+            <p>Selenium, Cypress, Playwright. Execute tests automatically, especially useful for regression.</p>
+          </div>
+          <div class="tool-category">
+            <h4>📈 Performance and Load</h4>
+            <p>JMeter, Gatling, k6. Simulate multiple users to measure behaviour under load.</p>
+          </div>
+          <div class="tool-category">
+            <h4>🔍 Static Analysis</h4>
+            <p>SonarQube, ESLint, Pylint. Detect defects in code without executing it.</p>
+          </div>
+          <div class="tool-category">
+            <h4>🧪 Component Test Frameworks</h4>
+            <p>JUnit, pytest, Jest, NUnit. Support writing and executing unit tests.</p>
+          </div>
+        </div>`
+      },
+      {
+        title: "Benefits, Risks and Success Factors",
+        content: `<h4>Benefits of Test Automation</h4>
+        <ul>
+          <li>Reduced effort for repetitive tests (regression)</li>
+          <li>Faster and more frequent test execution</li>
+          <li>Greater consistency and reproducibility</li>
+          <li>Test coverage not possible manually (performance)</li>
+          <li>Faster feedback on quality</li>
+        </ul>
+        <h4>Risks of Automation</h4>
+        <ul>
+          <li>Unrealistic expectations about return on investment</li>
+          <li>Underestimation of implementation and maintenance time</li>
+          <li>Excessive tool dependency (manual tests remain necessary)</li>
+          <li>Ignoring the need to update tests when the system changes</li>
+          <li>Choosing an inappropriate tool for the context</li>
+        </ul>
+        <h4>Success Factors for Selection and Implementation</h4>
+        <ul>
+          <li>Assess organisational maturity (do not automate without a stable process)</li>
+          <li>Run a pilot project before committing to a tool</li>
+          <li>Define clear selection criteria (compatibility, cost, support)</li>
+          <li>Provide team training</li>
+          <li>Establish script usage and maintenance conventions</li>
+        </ul>
+        <div class="info-box">
+          <strong>Important:</strong> Test automation does NOT replace manual testing. Exploratory, usability and user acceptance testing still require human judgement. Automation is most effective for stable, well-defined regression tests.
+        </div>`
+      }
+    ],
+    quiz: [
+      {
+        question: "What is the main risk of introducing test automation into an immature test process?",
+        options: [
+          "Automated tests are always slower than manual tests",
+          "Unrealistic expectations and underestimation of implementation and maintenance effort",
+          "Automation tools are not compatible with most systems",
+          "Automation eliminates the need for human testers"
+        ],
+        explanation: "One of the main risks is having unrealistic expectations about return on investment and underestimating the time needed to implement and maintain test scripts. Automation requires significant upfront investment and a sufficiently mature and stable test process."
+      },
+      {
+        question: "For which type of testing is automation most suitable?",
+        options: [
+          "Exploratory testing where user experience is evaluated",
+          "User acceptance testing (UAT) that requires customer opinion",
+          "Repetitive and stable regression tests with well-defined expected results",
+          "Ad hoc testing based on tester intuition"
+        ],
+        explanation: "Automation is most effective for stable and repetitive regression tests where expected results are well defined. Exploratory, usability and user acceptance testing require human judgement and are difficult to automate effectively."
+      },
+      {
+        question: "An organisation wants to implement Selenium to automate their UI tests. What is the ISTQB best practice before committing to this tool?",
+        options: [
+          "Immediately automate all existing test cases",
+          "Run a pilot project to evaluate the tool in the real context",
+          "Eliminate all manual tests before starting automation",
+          "Buy the most expensive licence to guarantee quality"
+        ],
+        explanation: "ISTQB recommends running a pilot project before committing to an automation tool. The pilot allows evaluation of compatibility with the system, team learning curve, actual maintenance effort and whether the tool meets project needs."
+      }
+    ]
+  }
+];
+
+// ============================================================
+// ENGLISH FLASHCARDS (parallel to FLASHCARDS array)
+// ============================================================
+const FC_EN = [
+  // ── Fundamentals ──────────────────────────────────────────
+  {
+    front: "Error → Defect → Failure",
+    back: "👤 ERROR: the dev writes calculateTax(price*0.16) instead of *0.19\n🐛 DEFECT: the incorrect code remains in production\n💥 FAILURE: the receipt shows the wrong price to the user"
+  },
+  {
+    front: "Testing vs Debugging",
+    back: "🔍 TESTING (QA): runs payment with expired card → system doesn't reject it → reports bug #482\n🔧 DEBUGGING (Dev): opens the code, finds the missing date validation, fixes it and creates a PR"
+  },
+  {
+    front: "Validation vs Verification",
+    back: "✅ VERIFICATION: login accepts max 20 characters as stated in the requirement\n🎯 VALIDATION: users in beta cannot remember 20-character passwords — the requirement was wrong"
+  },
+  {
+    front: "Root Cause of a defect",
+    back: "🔎 EFFECT: customers receive duplicate charges\n🐛 DEFECT: the 'Pay' button is not disabled after the first click\n🧠 ROOT CAUSE: ambiguous requirement — the team didn't specify double-click handling\n→ Eliminating the root cause prevents recurrence"
+  },
+  {
+    front: "Testing objectives",
+    back: "Testing does NOT only look for failures. Also:\n✓ Build confidence in quality\n✓ Provide info for informed decisions\n✓ Prevent defects (design quality in from the start)\n✓ Verify requirements and validate user needs"
+  },
+  // ── 7 Principles ─────────────────────────────────────────
+  {
+    front: "Principle 1: Testing shows...",
+    back: "...the PRESENCE of defects, NOT their absence.\n\nExample: Even if 500 regression tests pass, the payment module may have an uncovered bug.\n→ Never say 'the system is error-free'"
+  },
+  {
+    front: "Principle 2: Exhaustive testing is impossible",
+    back: "A text field with 255 possible characters × upper/lowercase × combinations = millions of inputs.\n→ Solution: Equivalence Partitioning + BVA + risk analysis to focus where to test"
+  },
+  {
+    front: "Principle 3: Early testing (Shift Left)",
+    back: "💰 Cost of fixing a defect:\n• In requirements: $1\n• In design: $10\n• In code: $100\n• In production: $1,000+\n→ Review requirements BEFORE writing code"
+  },
+  {
+    front: "Principle 4: Defect clustering",
+    back: "In a typical e-commerce app:\n• Payment module → 60% of bugs\n• Shopping cart module → 25% of bugs\n• Catalogue module → remaining 15%\n→ Focus tests on payment and cart (80/20 rule)"
+  },
+  {
+    front: "Principle 5: Pesticide paradox",
+    back: "If your 200 regression tests have gone 6 months without finding new bugs, the software has 'become immune'.\n→ Add new scenarios, vary data, use exploratory testing to discover new areas"
+  },
+  {
+    front: "Principle 6: Testing is context-dependent",
+    back: "Banking app: focus on security, accuracy, auditing, certifications\nGaming app: focus on performance, compatibility, user experience\nMedical app (pacemaker): focus on reliability, IEC 62304, functional safety testing\n→ Context defines the approach"
+  },
+  {
+    front: "Principle 7: Absence-of-errors fallacy",
+    back: "A bank launched an investment system with no technical bugs.\nUsers abandoned it because the interface was incomprehensible.\n→ Zero technical defects doesn't guarantee success. You must also validate usability and business value."
+  },
+  // ── Test Process ─────────────────────────────────────────
+  {
+    front: "7 Test Process Activities",
+    back: "1. Planning\n2. Monitoring and Control\n3. Analysis (WHAT to test?)\n4. Design (HOW to test?)\n5. Implementation (organise, prepare environment)\n6. Execution\n7. Completion (final report, lessons learned)"
+  },
+  {
+    front: "Test Analysis vs Test Design",
+    back: "📋 ANALYSIS answers: WHAT to test?\nEx: 'Test that the age field only accepts values between 18 and 65'\n\n✏️ DESIGN answers: HOW to test it?\nEx: Cases: age=17 (invalid), age=18 (valid), age=65 (valid), age=66 (invalid)"
+  },
+  {
+    front: "Test Plan — key content",
+    back: "✓ Objectives and scope\n✓ Approach (levels, types, techniques)\n✓ Entry and exit criteria\n✓ Resources (people, environments, tools)\n✓ Schedule and estimates\n✓ Risks and contingencies\n✓ Metrics and reports"
+  },
+  {
+    front: "Test Completion — what happens?",
+    back: "When closing a test cycle:\n✓ Verify exit criteria are met\n✓ Archive test cases, data and environments\n✓ Deliver the completion report\n✓ Collect lessons learned\n✓ Close open defects or carry them forward"
+  },
+  // ── Test Levels ──────────────────────────────────────────
+  {
+    front: "Component Testing (Unit)",
+    back: "What: an isolated function\nExample: test calculateDiscount(price, percentage) with:\n• price=100, pct=20 → expect 80\n• price=0, pct=50 → expect 0\n• price=-5 → error handling\nWho: the developer. Tool: JUnit, pytest, Jest"
+  },
+  {
+    front: "Component Integration Testing",
+    back: "What: the interface between modules\nExample: the 'Cart' module calls the 'Inventory' module.\nDoes it return the available stock correctly?\nWhat happens if Inventory doesn't respond in 2s?\nDo NOT test cart alone or inventory alone"
+  },
+  {
+    front: "System Testing",
+    back: "What: the complete system end-to-end\nExample: User searches product → adds to cart → pays by card → receives confirmation email → inventory updates\n→ Simulates the real business flow. Includes functional and non-functional."
+  },
+  {
+    front: "Acceptance Testing (UAT)",
+    back: "Who: the customer or end users\nExample in banking: the compliance team verifies the system generates correct IFRS reports.\nThe CEO tests that the executive dashboard shows the agreed KPIs.\n→ Validates whether the system satisfies business needs"
+  },
+  {
+    front: "Alpha vs Beta Testing",
+    back: "🏢 ALPHA: real users test at the developer's site with supervision\nEx: bank employees test the new app at the vendor's office\n\n🏠 BETA: real users test in their own environment without supervision\nEx: 500 selected customers use the app on their phones for 30 days"
+  },
+  // ── Test Types ───────────────────────────────────────────
+  {
+    front: "Functional vs Non-Functional Testing",
+    back: "✅ FUNCTIONAL: Does it do what it should?\nEx: The 'Pay' button correctly processes the payment\n\n⚡ NON-FUNCTIONAL: How well does it do it?\nEx: Payment processed in less than 2 seconds with 10,000 concurrent users\nEx: The system encrypts card data (security)"
+  },
+  {
+    front: "Confirmation vs Regression Testing",
+    back: "🔁 CONFIRMATION: bug #482 said expired cards were not rejected.\nAfter the fix: test that specific scenario → is it rejected now? ✓\n\n🌊 REGRESSION: after the fix, does payment with valid card still work? And instalment payments? → Verify nothing broke"
+  },
+  {
+    front: "Black-Box vs White-Box Testing",
+    back: "⬛ BLACK-BOX: you test the 'price' field with different values without seeing the code.\nTechniques: EP, BVA, decision tables\n\n⬜ WHITE-BOX: you verify that your test executes the IF for discount in both branches (true/false).\nTechniques: statement coverage, decision coverage"
+  },
+  // ── Techniques ───────────────────────────────────────────
+  {
+    front: "Equivalence Partitioning — example",
+    back: "Insurance 'age' field (18–65):\n❌ Invalid A: values < 18 → test e.g. 15\n✅ Valid: 18 to 65 → test e.g. 40\n❌ Invalid B: values > 65 → test e.g. 70\n→ 3 partitions = minimum 3 test cases\nTest 1 representative value from each partition"
+  },
+  {
+    front: "BVA 2-value — example",
+    back: "Price field (min: $1, max: $9,999):\nLower boundary → test $0 and $1\nUpper boundary → test $9,999 and $10,000\n→ 4 test cases for the boundaries\nBoundaries concentrate more defects than the interior"
+  },
+  {
+    front: "Decision Table — when to use it",
+    back: "Discount rule for a store:\n• VIP customer? Y/N\n• Purchase > $500? Y/N\n→ 4 combinations (2²)\nYY: 20% | YN: 10% | NY: 5% | NN: 0%\nIdeal when behaviour depends on combinations of conditions"
+  },
+  {
+    front: "State Transition — ATM example",
+    back: "States: IDLE → CARD_INSERTED → PIN_ENTERED → OPERATING → IDLE\nEvents: insert card / enter PIN / select operation / finish\nTest: what happens if PIN entered incorrectly 3 times? → State: BLOCKED\n→ Useful for reactive systems that change state"
+  },
+  {
+    front: "Decision vs Statement Coverage",
+    back: "Code:\nif (age >= 18) { showContent(); }\nreturn;\n\n100% STATEMENTS: run with age=20 → both lines covered ✓\n100% DECISIONS: need age=20 (IF=true) AND age=15 (IF=false) → more demanding\n→ 100% decision guarantees 100% statement, not vice versa"
+  },
+  {
+    front: "Exploratory Testing",
+    back: "TEST CHARTER:\n🎯 Objective: explore checkout flow on mobile with slow connection\n⏱ Duration: 45 minutes\n📱 Environment: iPhone 13, 3G network\n\nThe tester designs AND executes simultaneously, learning from the system.\nDocuments findings and defects during the session.\nUseful when documentation is scarce or time is short."
+  },
+  {
+    front: "Error Guessing",
+    back: "Based on tester EXPERIENCE.\nEx. for a login form:\n• Empty username/password field\n• Leading/trailing spaces in username\n• Special characters: ', --, <script>\n• Login with blocked account\n• 100 consecutive failed attempts\n→ Formalised with historical 'defect checklists'"
+  },
+  // ── Static Testing ───────────────────────────────────────
+  {
+    front: "Review Types (by formality)",
+    back: "Less formal → More formal:\n1. Informal Review (buddy check, no process)\n2. Walkthrough (author leads)\n3. Technical Review (moderator, may be the author)\n4. Inspection (certified moderator, metrics, most formal)"
+  },
+  {
+    front: "Inspection — roles and process",
+    back: "Roles: Certified Moderator · Author · Reviewers · Scribe · Inspection Leader\n\nProcess:\n1. Planning\n2. Initiation (entry criteria)\n3. Individual review\n4. Inspection meeting\n5. Rework\n6. Follow-up (exit criteria + metrics)"
+  },
+  {
+    front: "What does static analysis detect?",
+    back: "Without executing code, tools like SonarQube detect:\n• Uninitialised variables\n• Dead code (never executed)\n• High cyclomatic complexity (>10 → hard to maintain)\n• Vulnerabilities: SQL injection, XSS, buffer overflow\n• Coding standard violations"
+  },
+  // ── Management ───────────────────────────────────────────
+  {
+    front: "Severity vs Priority",
+    back: "Bug: company logo appears pixelated on homepage\n📊 SEVERITY: Low (cosmetic, does not affect functionality)\n🚨 PRIORITY: High (the CEO presents the site to investors tomorrow)\n\n→ Severity = technical impact (assigned by QA)\n→ Priority = business urgency (assigned by PO/client)"
+  },
+  {
+    front: "Product Risk vs Project Risk",
+    back: "🛍️ PRODUCT RISK (what can fail in the system?):\n• Payment module with complex legacy logic\n• New integration with undocumented bank API\n\n🗂️ PROJECT RISK (what can affect the team?):\n• Senior QA resigns in the week of launch\n• Vendor delivers the environment late"
+  },
+  {
+    front: "Entry Criteria (DoR)",
+    back: "Before starting to test the payment module:\n✓ Test environment configured (staging active)\n✓ Build 2.3.1 deployed and smoke test OK\n✓ Test card data available\n✓ Test cases reviewed and approved\n✓ Defect tool (Jira) accessible"
+  },
+  {
+    front: "Exit Criteria (DoD)",
+    back: "To close the system test cycle:\n✓ 95% of planned test cases executed\n✓ 100% of critical and high defects resolved\n✓ Open medium defects ≤ 5 (documented and accepted)\n✓ Requirements coverage ≥ 90%\n✓ Test report delivered and approved"
+  },
+  {
+    front: "Defect Report — required fields",
+    back: "Unique ID · Date · Author\nDescriptive title (what, where, when)\nSteps to reproduce (numbered, precise)\nExpected result vs actual result\nSeverity + Priority\nEnvironment (OS, browser, version)\nEvidence (screenshot, video, log)\nStatus: New → Assigned → In Progress → Resolved → Closed"
+  },
+  // ── Agile ────────────────────────────────────────────────
+  {
+    front: "TDD — Red-Green-Refactor cycle",
+    back: "🔴 RED: write a test that FAILS\nEx: test_calculate_vat() expects 119, code returns 0 → FAILS\n\n🟢 GREEN: write the MINIMUM code to pass it\nEx: return price * 1.19\n\n🔵 REFACTOR: improve the code without breaking the test"
+  },
+  {
+    front: "ATDD and BDD",
+    back: "ATDD (Acceptance Test Driven Development):\nClient, QA and dev define acceptance criteria BEFORE coding\n\nBDD (Behavior Driven Development) — Gherkin language:\nGiven the user is on the login page\nWhen they enter username='admin' and password='admin123'\nThen they should see the main dashboard"
+  },
+  {
+    front: "Agile Testing Quadrants",
+    back: "Q1 (↙ Technology + Support): unit, integration, TDD\nQ2 (↘ Business + Support): functional, acceptance criteria\nQ3 (↗ Business + Critique): exploratory, usability, UAT\nQ4 (↖ Technology + Critique): performance, security, reliability\n→ A good agile team covers all 4 quadrants"
+  },
+  // ── Tools ────────────────────────────────────────────────
+  {
+    front: "Tools by category",
+    back: "📋 Management: TestRail, Zephyr, Azure Test Plans\n🐛 Defects: Jira, GitHub Issues, Bugzilla\n⚙️ UI Automation: Selenium, Cypress, Playwright\n⚙️ Unit: JUnit, pytest, Jest\n📈 Performance: JMeter, k6, Gatling\n🔍 Static analysis: SonarQube, ESLint, Pylint"
+  },
+  {
+    front: "Benefits vs Risks of automation",
+    back: "✅ BENEFITS:\n• Faster and more frequent regression\n• Consistency (no 'human oversights')\n• Enables load testing (impossible manually)\n\n⚠️ RISKS:\n• High initial investment (scripts, infrastructure)\n• Costly maintenance when the system changes\n• Does not replace exploratory testing"
+  },
+  {
+    front: "What CANNOT be automated well?",
+    back: "❌ Exploratory testing (requires intuition and real-time learning)\n❌ Usability testing (is it easy for a human to use?)\n❌ End-user acceptance testing (UAT)\n❌ Ad hoc testing based on QA experience\n→ Automate what is stable and repetitive; keep the human for cognitive tasks"
+  }
+];
+
+// ============================================================
+// ENGLISH GLOSSARY (parallel to GLOSSARY array)
+// ============================================================
+const GLOS_EN = [
+  { term: "Boundary Value Analysis (BVA)", definition: "A black-box test design technique that derives test cases from the boundary values of equivalence partitions." },
+  { term: "Test basis", definition: "The set of documents used as reference for test analysis and design (requirements, design, code, etc.)." },
+  { term: "Test case", definition: "A set of input conditions, preconditions, steps and expected results developed for a specific test objective." },
+  { term: "Root cause", definition: "The fundamental reason why a defect occurred. Identifying it allows organisations to prevent similar defects in the future." },
+  { term: "Coverage", definition: "The degree to which a specific coverage criterion has been satisfied during testing, expressed as a percentage." },
+  { term: "Test condition", definition: "An aspect of the test object that can be verified by one or more test cases." },
+  { term: "Entry criteria", definition: "Conditions that must be met before a planned testing activity can begin. Also called Definition of Ready." },
+  { term: "Exit criteria", definition: "Conditions that must be met to conclude a testing activity. Also called Definition of Done." },
+  { term: "Defect", definition: "An imperfection or deficiency in a work product that may cause the component or system to fail to meet its requirements." },
+  { term: "Debugging", definition: "The process of finding, analysing and removing the causes of failures in software. It is a development activity, not a testing activity." },
+  { term: "Error", definition: "A human action that produces an incorrect result, including writing code with defects." },
+  { term: "Failure", definition: "Deviation of the component or system from its expected behaviour during operation." },
+  { term: "Configuration management", definition: "A discipline that applies technical and administrative direction and surveillance to identify and document the characteristics of configuration items." },
+  { term: "Inspection", definition: "The most formal type of static review. Includes a documented process, defined roles (certified moderator), entry/exit criteria and metrics." },
+  { term: "Test level", definition: "A group of testing activities that are organised and managed together (component, integration, system, acceptance)." },
+  { term: "Test object", definition: "The component or system to be analysed by testing." },
+  { term: "Test oracle", definition: "A source that allows determination of whether the system under test has passed or failed a test (specification, prototype, past behaviour)." },
+  { term: "Pesticide paradox", definition: "The phenomenon by which the same test cases executed repeatedly eventually stop finding new defects." },
+  { term: "Equivalence partitioning", definition: "A test design technique that divides input data into partitions where all values behave in the same way." },
+  { term: "Test plan", definition: "Documentation describing the objectives, scope, approach, resources and schedule of testing activities." },
+  { term: "Failure probability", definition: "The probability that the component or system will produce a failure within a given period of time." },
+  { term: "Test procedure", definition: "A sequence of test steps for the execution of one or more test cases." },
+  { term: "Alpha testing", definition: "Acceptance testing of a software product performed at the developer's site by representatives of intended users." },
+  { term: "Risk-based testing", definition: "A testing approach in which testing activities are prioritised and managed based on the level of product risk." },
+  { term: "Beta testing", definition: "Acceptance testing of a software product performed by representatives of intended users at their own site." },
+  { term: "Component testing", definition: "A test level that verifies the behaviour of a software component in isolation. Also called unit testing." },
+  { term: "Regression testing", definition: "Testing of a previously tested system after modifications to detect defects introduced or not corrected." },
+  { term: "Static testing", definition: "Testing that does not involve execution of the component or system under test (reviews, static analysis)." },
+  { term: "Exploratory testing", definition: "An approach in which the tester simultaneously designs and executes tests, learning about the system during the session." },
+  { term: "Product risk", definition: "A risk related directly to the test object, such as the possibility that the software fails in production." },
+  { term: "Project risk", definition: "A risk related to the project, such as resource availability, deadlines or changing requirements." },
+  { term: "Severity", definition: "The degree to which a defect impacts the development or operation of the system. Determined by the test team." },
+  { term: "Decision table", definition: "A test design technique that represents combinations of input conditions and the resulting system actions." },
+  { term: "Test type", definition: "A group of testing activities related to specific quality attributes (functional, performance, security, etc.)." },
+  { term: "Traceability", definition: "The ability to identify and follow the relationship between work products (requirements → test cases → defects)." },
+  { term: "Validation", definition: "Confirmation that the product satisfies the real needs of the user. Are we building the right product?" },
+  { term: "Verification", definition: "Confirmation that the product meets the specified requirements. Are we building the product correctly?" }
+];
+
+// ============================================================
+// ENGLISH EXAM QUESTIONS (parallel to EXAM_QUESTIONS array)
+// ============================================================
+const EXAM_EN = [
+  // Chapter 1 - Fundamentals
+  { question: "Which of the following is a testing objective according to ISTQB?", options: ["Prove that the software has no defects", "Provide information to stakeholders for informed decisions", "Guarantee that all tests are successful", "Replace code debugging"] },
+  { question: "A tester executes software with input data and observes whether the behaviour matches the expected. This is an example of:", options: ["Static testing", "Dynamic testing", "Static analysis", "Code review"] },
+  { question: "According to Principle 4 (defect clustering), what does this imply for test planning?", options: ["Distribute tests evenly across all modules", "Concentrate more effort on modules with the highest defect history", "Test the lowest-risk modules first", "Use only automated tests for complex modules"] },
+  { question: "How does an error differ from a defect?", options: ["There is no difference; they are interchangeable terms", "The error is the human action; the defect is the resulting imperfection in the product", "The defect is the human action; the error is the system failure", "The error is detected by the tester; the defect by the developer"] },
+  { question: "Which principle supports the practice of 'shift left' in testing?", options: ["Principle 1: Testing shows presence of defects", "Principle 3: Early testing saves time and money", "Principle 5: The pesticide paradox", "Principle 7: Absence-of-errors fallacy"] },
+  { question: "Which of the following activities belongs to the 'Test Design' process?", options: ["Define testing objectives and approach", "Elaborate test cases and test data", "Execute test cases and record results", "Archive work products at completion"] },
+  { question: "A flight control system passes all functional tests. However, pilots indicate the interface is not intuitive in emergency situations. Which principle applies?", options: ["Principle 1: Testing shows presence of defects", "Principle 4: Defect clustering", "Principle 7: Absence-of-errors fallacy", "Principle 5: Pesticide paradox"] },
+  // Chapter 2 - SDLC
+  { question: "Which test level verifies the communication between integrated modules?", options: ["Component testing", "Integration testing", "System testing", "Acceptance testing"] },
+  { question: "In the V-Model, when are system test cases designed?", options: ["Only during the test execution phase", "At the same time as system design is developed", "After the entire system is coded", "During acceptance testing"] },
+  { question: "Which test type verifies specifically that a defect fix has not introduced new defects in unmodified parts?", options: ["Confirmation testing", "Regression testing", "Integration testing", "Smoke testing"] },
+  { question: "A customer uses the software in their real environment for 30 days before the official launch, without supervision from the development team. What type of testing is this?", options: ["Alpha testing", "Operational acceptance testing", "Beta testing", "System testing"] },
+  { question: "Non-functional testing includes:", options: ["Verify that login accepts valid credentials", "Measure response time under 1000 concurrent users", "Check that the shopping cart calculates the total correctly", "Validate that the registration form accepts names with special characters"] },
+  { question: "Which agile testing quadrant (Marick) corresponds to exploratory and usability testing?", options: ["Q1 - Team Support / Technology", "Q2 - Team Support / Business", "Q3 - Product Critique / Business", "Q4 - Product Critique / Technology"] },
+  // Chapter 3 - Static Testing
+  { question: "Which of the following is an example of static testing?", options: ["Run automated regression tests", "Review a requirements document for ambiguities", "Measure application response time", "Conduct usability testing with real users"] },
+  { question: "What distinguishes an inspection from a technical review?", options: ["Inspection is less formal than a technical review", "Inspection has a certified moderator and formally collects metrics", "Technical review has entry and exit criteria; inspection does not", "There is no difference; they are equivalent review types"] },
+  { question: "What type of defect is most likely to be detected by static analysis tools?", options: ["Contradictory requirements between documents", "Variables declared but never used in code", "Response time above threshold under load", "Error messages that confuse the user"] },
+  { question: "In a walkthrough, who has the main role?", options: ["The independent moderator", "The author of the work product", "The test manager", "An external expert"] },
+  // Chapter 4 - Techniques
+  { question: "A field accepts passwords from 8 to 20 characters. Using equivalence partitioning, how many partitions are identified?", options: ["1", "2", "3", "4"] },
+  { question: "For a field accepting values between 10 and 50, using 2-value BVA, which test values cover the boundaries?", options: ["10 and 50", "9, 10, 50 and 51", "10, 11, 49 and 50", "9 and 51"] },
+  { question: "A discount system applies 10% if the purchase is over $100 AND the customer is VIP, or 5% if over $100 but customer is NOT VIP. Which technique is most suitable for designing exhaustive test cases?", options: ["Equivalence partitioning", "Boundary value analysis", "Decision table", "State transition testing"] },
+  { question: "A tester wants to ensure all possible outcomes of each IF condition in the code have been evaluated as true and false. Which coverage level are they seeking?", options: ["Statement coverage", "Decision coverage", "Multiple condition coverage", "Modified condition/decision coverage"] },
+  { question: "State transition testing is most suitable for testing:", options: ["A form with multiple independent input fields", "A traffic light control system that responds to external events", "Database performance under load", "Compatibility across different browsers"] },
+  { question: "How many test cases are needed as a minimum to achieve 100% transition coverage in a diagram with 3 states and 4 valid transitions?", options: ["3 (one per state)", "4 (one per transition)", "7 (states + transitions)", "2 (one for initial and final state)"] },
+  { question: "A tester uses intuition and experience to identify defect-prone areas and designs additional tests without prior documentation. This is called:", options: ["Exploratory testing", "Error guessing", "Checklist-based testing", "Root cause analysis"] },
+  // Chapter 5 - Management
+  { question: "What is the main advantage of having a test team independent from the development team?", options: ["Independent testers are always faster", "Greater ability to find defects by having a different perspective from the author", "They eliminate the need for developers to perform unit tests", "They reduce the overall project cost"] },
+  { question: "Which of the following is the Test Manager's responsibility?", options: ["Design individual test cases", "Execute test cases and record results", "Plan testing and manage test process risks", "Develop test automation scripts"] },
+  { question: "A cosmetic defect (spelling error on the home screen) receives High Priority because the CEO will show a demo tomorrow. Its Severity is Low. Does this contradict ISTQB principles?", options: ["Yes; priority must always match severity", "No; severity and priority are independent dimensions assigned by different roles", "Yes; cosmetic defects should not have high priority", "No; priority is assigned by the test manager based on technical severity"] },
+  { question: "Which metric best indicates test process effectiveness?", options: ["Total number of test cases designed", "Percentage of defects found in testing vs found in production", "Speed of test execution in minutes", "Number of testers on the team"] },
+  { question: "Risk-based testing means that system areas with the highest product risk receive:", options: ["Fewer tests to save resources", "More attention and testing effort", "Only automated tests", "Only functional tests"] },
+  { question: "Which of the following is NOT typically part of a Test Plan?", options: ["Test objectives and scope", "Source code of the system under test", "Entry and exit criteria", "Schedule and effort estimates"] },
+  { question: "What is the difference between product risk and project risk?", options: ["Product risk is always more serious than project risk", "Product risk refers to the possibility of system failure; project risk refers to factors affecting project management", "Project risk is only managed by the project manager, not the test manager", "There is no practical difference between them"] },
+  // Chapter 6 - Tools
+  { question: "What is the main benefit of test automation for regression testing?", options: ["It eliminates the need for human testers", "It allows repetitive tests to run faster and more consistently", "It automatically guarantees 100% code coverage", "It reduces the need to keep test cases up to date"] },
+  { question: "A tool like SonarQube that analyses code for vulnerabilities without executing it is an example of:", options: ["Test management tool", "Static analysis tool", "Dynamic test automation framework", "Performance testing tool"] },
+  { question: "Why does ISTQB recommend running a pilot project before implementing an automation tool?", options: ["To justify the budget to management", "To evaluate the tool in the real context and detect problems before full commitment", "Because automation tools always fail on the first attempt", "So testers can learn to use it without pressure"] },
+  { question: "Which of the following is a real risk of automating tests?", options: ["Automated tests always find more defects than manual tests", "Unrealistic expectations about the return on investment of automation", "Automation tools are too expensive for SMEs", "Automation only works with web systems"] },
+  // Mixed integration questions
+  { question: "Which of the following statements about testing in an agile model is CORRECT?", options: ["Testing only occurs at the end of each sprint", "Testing is continuous and forms an integral part of each sprint", "In agile, no entry or exit criteria are needed", "Testers do not participate in sprint planning"] },
+  { question: "A QA team discovers that the reporting module has 60% of all system defects, although it represents 15% of the code. What is the most appropriate action according to ISTQB principles?", options: ["Distribute tests evenly across all modules", "Concentrate more testing effort on the reporting module (defect clustering)", "Delete the reporting module and rewrite it completely", "Reduce testing on the reporting module since defects were already found"] },
+  { question: "A tester designs test cases for a numeric field using equivalence partitioning AND boundary value analysis. Why combine both techniques?", options: ["To reduce the total number of test cases", "To achieve greater coverage: EP covers partition interiors; BVA covers edges where most defects occur", "Because ISTQB requires always using both techniques together", "Because EP alone cannot be applied to numeric fields"] },
+  { question: "A system has passed all load and performance tests (Q4), but users in beta testing report that the checkout flow is confusing. In which quadrant should testing be reinforced?", options: ["Q1 - Team Support / Technology", "Q2 - Team Support / Business", "Q3 - Product Critique / Business", "Q4 - Product Critique / Technology"] },
+  { question: "The ISTQB Foundation Level exam has:", options: ["50 questions, 75% to pass", "40 questions, 65% to pass (26/40)", "30 questions, 70% to pass", "40 questions, 70% to pass (28/40)"] }
+];
